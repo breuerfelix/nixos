@@ -39,7 +39,6 @@
 
   networking = {
     hostName = "rocky"; # Define your hostname.
-    #networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
     networkmanager.enable = true;
     useDHCP = false;
     interfaces.wlp7s0.useDHCP = true;

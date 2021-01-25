@@ -13,7 +13,7 @@
         config = null;
         # use config from file
         extraConfig =
-          lib.strings.fileContents /config/dotfiles/wm/i3.config;
+          lib.strings.fileContents ./dotfiles/wm/i3.config;
       };
     };
 
@@ -59,7 +59,7 @@
         enable = true;
         plugins = with pkgs; [ tmuxPlugins.gruvbox ];
         extraConfig =
-          lib.strings.fileContents /config/dotfiles/shell/.tmux.conf;
+          lib.strings.fileContents ./dotfiles/shell/.tmux.conf;
       };
 
       fzf = {
@@ -82,7 +82,7 @@
         withPython3 = true;
         withRuby = true;
         configure = {
-          customRC = lib.strings.fileContents /config/dotfiles/shell/.vimrc;
+          customRC = lib.strings.fileContents ./dotfiles/shell/.vimrc;
         };
 
         #extraConfig = lib.strings.fileContents ~/dotfiles/shell/.vimrc;
