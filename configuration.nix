@@ -35,7 +35,7 @@
   nixpkgs.config.allowUnfree = true;
 
   nix = {
-    allowedUsers = [ "root" "felix" ];
+    allowedUsers = [ "root" ];
     gc = {
       automatic = true;
       dates = "weekly";

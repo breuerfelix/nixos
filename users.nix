@@ -15,6 +15,8 @@
     };
   };
 
+  nix.allowedUsers = [ "felix" ];
+
   home-manager = {
     # TODO Are you sure you want to use *BOTH* options here?
     useUserPackages = true;
