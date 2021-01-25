@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }:
 
 {
-  imports =
-    [ <home-manager/nixos> ];
+  imports = [ <home-manager/nixos> ];
 
   security.sudo.wheelNeedsPassword = false;
   users.defaultUserShell = pkgs.fish;
@@ -10,7 +9,7 @@
     isNormalUser = true;
     home = "/home/felix";
     description = "Felix Breuer";
-    extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ]; #libvirtd
+    extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ]; # libvirtd
   };
 
   home-manager = {
@@ -31,68 +30,60 @@
         # disable generation of default config
         config = null;
         # use config from file
-        extraConfig = lib.strings.fileContents /home/felix/dotfiles/wm/i3.config;
+        extraConfig =
+          lib.strings.fileContents /home/felix/dotfiles/wm/i3.config;
       };
     };
-  
+
     # allow proprietary packages
     #nixpkgs.config.allowUnfree = true;
-    home.packages = with pkgs; [
-      nerdfonts
-      corefonts
-      fd ripgrep
-    ];
-  
+    home.packages = with pkgs; [ nerdfonts corefonts fd ripgrep ];
+
     # allow installation of fonts
     fonts.fontconfig.enable = true;
-  
+
     manual.manpages.enable = true;
-  
+
     programs.fish = {
       enable = true;
-      shellAliases = {
-        bla = "echo";
-      };
+      shellAliases = { bla = "echo"; };
       promptInit = ''
         set fish_greeting
       '';
     };
-  
+
     programs.autojump = {
       enable = true;
       enableFishIntegration = true;
     };
-  
+
     programs.htop = {
       enable = true;
       treeView = true;
     };
-  
-    programs.alacritty = {
-      enable = true;
-    };
-  
+
+    programs.alacritty = { enable = true; };
+
     programs.tmux = {
       enable = true;
-      plugins = with pkgs; [
-        tmuxPlugins.gruvbox
-      ];
-      extraConfig = lib.strings.fileContents /home/felix/dotfiles/shell/.tmux.conf;
+      plugins = with pkgs; [ tmuxPlugins.gruvbox ];
+      extraConfig =
+        lib.strings.fileContents /home/felix/dotfiles/shell/.tmux.conf;
     };
-  
+
     programs.fzf = {
       enable = true;
       enableFishIntegration = true;
       defaultCommand = "fd --type f --hidden";
       fileWidgetCommand = "fd --type f --hidden";
       #defaultOptions = [
-        #"--hidden"
-        #"--follow"
-        #"--exclude .git"
-        #"--exclude .vim"
+      #"--hidden"
+      #"--follow"
+      #"--exclude .git"
+      #"--exclude .vim"
       #];
     };
-  
+
     programs.neovim = {
       enable = true;
       withNodeJs = true;
@@ -102,11 +93,11 @@
       configure = {
         customRC = lib.strings.fileContents /home/felix/dotfiles/shell/.vimrc;
       };
-  
+
       #extraConfig = lib.strings.fileContents ~/dotfiles/shell/.vimrc;
       #plugins = with pkgs.vimPlugins; [ vim-plug ];
     };
-  
+
     programs.firefox = {
       enable = true;
       #package = pkgs.firefox-bin;
@@ -131,10 +122,6 @@
       hs = "home-manager switch";
     };
 
-    systemPackages = with pkgs; [
-      curl
-      git
-      vim
-    ];
+    systemPackages = with pkgs; [ curl git vim ];
   };
 }
