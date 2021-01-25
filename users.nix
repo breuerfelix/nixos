@@ -18,6 +18,7 @@
   };
 
   home-manager.users.felix = {
+
     programs.home-manager.enable = true;
 
     xsession = {
@@ -44,64 +45,70 @@
 
     manual.manpages.enable = true;
 
-    programs.fish = {
-      enable = true;
-      shellAliases = { bla = "echo"; };
-      promptInit = ''
-        set fish_greeting
-      '';
-    };
+    # TODO: Group all programs in `programs = { ... };
 
-    programs.autojump = {
-      enable = true;
-      enableFishIntegration = true;
-    };
-
-    programs.htop = {
-      enable = true;
-      treeView = true;
-    };
-
-    programs.alacritty = { enable = true; };
-
-    programs.tmux = {
-      enable = true;
-      plugins = with pkgs; [ tmuxPlugins.gruvbox ];
-      extraConfig =
-        lib.strings.fileContents /home/felix/dotfiles/shell/.tmux.conf;
-    };
-
-    programs.fzf = {
-      enable = true;
-      enableFishIntegration = true;
-      defaultCommand = "fd --type f --hidden";
-      fileWidgetCommand = "fd --type f --hidden";
-      #defaultOptions = [
-      #"--hidden"
-      #"--follow"
-      #"--exclude .git"
-      #"--exclude .vim"
-      #];
-    };
-
-    programs.neovim = {
-      enable = true;
-      withNodeJs = true;
-      withPython = true;
-      withPython3 = true;
-      withRuby = true;
-      configure = {
-        customRC = lib.strings.fileContents /home/felix/dotfiles/shell/.vimrc;
+    programs = {
+      fish = {
+        enable = true;
+        shellAliases = { bla = "echo"; };
+        promptInit = ''
+          set fish_greeting
+        '';
       };
 
-      #extraConfig = lib.strings.fileContents ~/dotfiles/shell/.vimrc;
-      #plugins = with pkgs.vimPlugins; [ vim-plug ];
+      autojump = {
+        enable = true;
+        enableFishIntegration = true;
+      };
+
+      htop = {
+        enable = true;
+        treeView = true;
+      };
+
+      alacritty = { enable = true; };
+
+      tmux = {
+        enable = true;
+        plugins = with pkgs; [ tmuxPlugins.gruvbox ];
+        extraConfig =
+          lib.strings.fileContents /home/felix/dotfiles/shell/.tmux.conf;
+      };
+
+      fzf = {
+        enable = true;
+        enableFishIntegration = true;
+        defaultCommand = "fd --type f --hidden";
+        fileWidgetCommand = "fd --type f --hidden";
+        #defaultOptions = [
+        #"--hidden"
+        #"--follow"
+        #"--exclude .git"
+        #"--exclude .vim"
+        #];
+      };
+
+      neovim = {
+        enable = true;
+        withNodeJs = true;
+        withPython = true;
+        withPython3 = true;
+        withRuby = true;
+        configure = {
+          customRC = lib.strings.fileContents /home/felix/dotfiles/shell/.vimrc;
+        };
+
+        #extraConfig = lib.strings.fileContents ~/dotfiles/shell/.vimrc;
+        #plugins = with pkgs.vimPlugins; [ vim-plug ];
+      };
+
+      firefox = {
+        enable = true;
+        #package = pkgs.firefox-bin;
+      };
+
     };
 
-    programs.firefox = {
-      enable = true;
-      #package = pkgs.firefox-bin;
-    };
   };
 
   environment = {
