@@ -32,9 +32,6 @@
     };
   };
 
-  # Glablally installed packages
-  systemPackages = with pkgs; [ curl git vim ];
-
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -89,6 +86,9 @@
 
   # Environment variables
   environment = {
+    # Glablally installed packages
+    systemPackages = with pkgs; [ curl git vim ];
+
     variables = {
       EDITOR = "vim";
       VISUAL = "vim";
