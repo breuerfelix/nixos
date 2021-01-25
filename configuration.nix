@@ -32,6 +32,9 @@
     };
   };
 
+  # Glablally installed packages
+  systemPackages = with pkgs; [ curl git vim ];
+
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -84,13 +87,25 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
-  # This value determines the NixOS release from which the default
-  # settings for stateful data, like file locations and database versions
-  # on your system were taken. It‘s perfectly fine and recommended to leave
-  # this value at the release version of the first install of this system.
-  # Before changing this value read the documentation for this option
-  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
-  system.stateVersion = "20.09"; # Did you read the comment?
+  # Environment variables
+  environment = {
+    variables = {
+      EDITOR = "vim";
+      VISUAL = "vim";
+    };
+
+    shellAliases = {
+      vi = "nvim";
+      svi = "sudo vim";
+      nr = "nixos-rebuild";
+      ne = "sudo vim /etc/nixos/configuration.nix";
+      ns = "sudo nixos-rebuild switch --upgrade";
+      nb = "nixos-rebuild build";
+      h = "home-manager";
+      he = "nvim $HOME/.config/nixpkgs/home.nix";
+      hs = "home-manager switch";
+    };
+  };
 
   # user stuff
   sound.enable = true;
@@ -132,4 +147,12 @@
       lightdm.enable = true;
     };
   };
+
+  # This value determines the NixOS release from which the default
+  # settings for stateful data, like file locations and database versions
+  # on your system were taken. It‘s perfectly fine and recommended to leave
+  # this value at the release version of the first install of this system.
+  # Before changing this value read the documentation for this option
+  # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
+  system.stateVersion = "20.09"; # Did you read the comment?
 }
