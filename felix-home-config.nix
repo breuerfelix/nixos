@@ -17,18 +17,24 @@
       };
     };
 
-    # allow proprietary packages
-    #nixpkgs.config.allowUnfree = true;
-    home.packages = with pkgs; [ nerdfonts corefonts fd ripgrep ];
+    home.packages = with pkgs; [
+      nerdfonts corefonts
+      fd ripgrep
+    ];
 
     # allow installation of fonts
     fonts.fontconfig.enable = true;
 
     manual.manpages.enable = true;
 
-
     # User programs configuration
     programs = {
+      git = {
+        enable = true;
+        userEmail = "fbreuer@pm.me";
+        userName = "Felix Breuer";
+      };
+
       fish = {
         enable = true;
         shellAliases = { bla = "echo"; };
