@@ -13,17 +13,17 @@
   boot.extraModulePackages = [ ];
 
   fileSystems."/" = {
-    device = "/dev/disk/by-uuid/79abc226-33b9-4bb8-9258-a9d03ccc2a23";
+    device = "/dev/disk/by-label/root";
     fsType = "ext4";
   };
 
   fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/44BD-02B1";
+    device = "/dev/disk/by-label/boot";
     fsType = "vfat";
   };
 
   swapDevices =
-    [{ device = "/dev/disk/by-uuid/83f9482d-355a-4a24-8879-786d43e1644c"; }];
+    [{ device = "/dev/disk/by-label/swap"; }];
 
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;

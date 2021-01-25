@@ -8,24 +8,18 @@
 
       enable = true;
       version = 2;
-      # Define on which hard drive you want to install Grub.
-      # boot.loader.grub.device = "/dev/sda"; # or "nodev" for efi only
       device = "nodev";
       efiSupport = true;
       # for detecting dual boot windows
       useOSProber = true;
-
-      # efiInstallAsRemovable = true;
-
     };
 
-    # boot.loader.efi.efiSysMountPoint = "/boot/efi";
     loader.efi.canTouchEfiVariables = true;
 
     cleanTmpDir = true;
     initrd.luks.devices = {
       root = {
-        device = "/dev/disk/by-uuid/539800f0-426f-435b-9382-76ee7df92efd";
+        device = "/dev/disk/by-label/luks";
         preLVM = true;
         allowDiscards = true;
       };

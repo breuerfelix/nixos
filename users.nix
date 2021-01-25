@@ -11,18 +11,17 @@
       isNormalUser = true;
       home = "/home/felix";
       description = "Felix Breuer";
-      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ]; # libvirtd
+      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ];
     };
   };
 
   nix.allowedUsers = [ "felix" ];
 
   home-manager = {
-    # TODO Are you sure you want to use *BOTH* options here?
     useUserPackages = true;
     useGlobalPkgs = true;
   };
 
   # Home-manager configuration for user felix
-  home-manager.users.felix = import ./felix-home-config.nix;
+  home-manager.users.felix = import ./felix.nix;
 }
