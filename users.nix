@@ -53,8 +53,8 @@
 
     manual.manpages.enable = true;
 
-    # TODO: Group all programs in `programs = { ... };
 
+    # User programs configuration
     programs = {
       fish = {
         enable = true;
