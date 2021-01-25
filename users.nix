@@ -1,22 +1,28 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, ... }: {
 
-{
   imports = [ <home-manager/nixos> ];
 
   security.sudo.wheelNeedsPassword = false;
-  users.defaultUserShell = pkgs.fish;
-  users.users.felix = {
-    isNormalUser = true;
-    home = "/home/felix";
-    description = "Felix Breuer";
-    extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ]; # libvirtd
+
+  # Additional system users
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.felix = {
+      isNormalUser = true;
+      home = "/home/felix";
+      description = "Felix Breuer";
+      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ]; # libvirtd
+    };
   };
 
   home-manager = {
+    # TODO Are you sure you want to use *BOTH* options here?
     useUserPackages = true;
     useGlobalPkgs = true;
   };
 
+  # TODO Replace with something like:
+  # home-manager.users.felix = import ./home-felix.nix
   home-manager.users.felix = {
 
     programs.home-manager.enable = true;
