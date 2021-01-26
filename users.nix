@@ -1,27 +1,35 @@
 { config, pkgs, lib, ... }: {
 
-  imports = [ <home-manager/nixos> ];
+  imports = [
+    <home-manager/nixos>
+    ./desktop/gtk.nix
+  ];
 
   security.sudo.wheelNeedsPassword = false;
 
-  # Additional system users
-  users = {
-    defaultUserShell = pkgs.fish;
-    users.felix = {
-      isNormalUser = true;
-      home = "/home/felix";
-      description = "Felix Breuer";
-      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ];
-    };
+  programs = {
+    # database for gtk applications
+    dconf.enable = true;
+    # picks up shell alias
+    fish.enable = true;
   };
-
-  nix.allowedUsers = [ "felix" ];
 
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
   };
 
-  # Home-manager configuration for user felix
+  # specific user configurations
+  users = {
+    defaultUserShell = pkgs.fish;
+    users.felix = {
+      isNormalUser = true;
+      home = "/home/felix";
+      description = "scriptworld";
+      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ];
+    };
+  };
+
   home-manager.users.felix = import ./felix.nix;
+  nix.allowedUsers = [ "felix" ];
 }

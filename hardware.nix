@@ -27,5 +27,5 @@
 
   # high-resolution display
   hardware.video.hidpi.enable = lib.mkDefault true;
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "conservative";
 }
