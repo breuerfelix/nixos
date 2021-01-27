@@ -14,6 +14,10 @@
     fish.enable = true;
   };
 
+  services = {
+    greenclip.enable = true;
+  };
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;

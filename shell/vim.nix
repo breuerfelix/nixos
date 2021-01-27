@@ -6,9 +6,10 @@
     withPython3 = true;
     withRuby = true;
     configure = {
+      # TODO generate base16 scheme
       customRC = lib.strings.concatStrings [
-        (lib.strings.fileContents /etc/nixos/shell/base.vim)
-        (lib.strings.fileContents /etc/nixos/shell/plugins.vim)
+        (lib.strings.fileContents ./base.vim)
+        (lib.strings.fileContents ./plugins.vim)
       ];
     };
   };

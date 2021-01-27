@@ -5,7 +5,7 @@
       weather = "curl -4 http://wttr.in/Koeln";
     };
     interactiveShellInit = ''
-      source /etc/nixos/shell/bash.fish
+      source /etc/nixos/shell/init.fish
 
       set fish_greeting
 
@@ -13,6 +13,7 @@
       bind \v up-or-search
       bind \n down-or-search
       bind -k nul forward-char
+      bind \cE edit_command_buffer
 
       # colorscheme
       set -U fish_color_normal normal

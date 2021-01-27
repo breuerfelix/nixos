@@ -38,7 +38,7 @@ in {
         }
       ];
 
-      font = vars.font;
+      font = vars.terminalFont;
       cursor = { style = "Block"; };
       colors = {
         primary = {

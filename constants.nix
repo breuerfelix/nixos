@@ -1,7 +1,7 @@
 {
   colors = {
 
-    scheme = "generated";
+    scheme = "Generated";
     author = "Pablo";
 
     # base00 = "0b0b14"; # #0b0b14 color0
@@ -41,9 +41,17 @@
 
   };
 
-  scheme = "nord";
-
   font = {
+    name = "Source Sans Pro 10";
+    packageName = "source-sans-pro";
+  };
+
+  icons = {
+    name = "Papirus-Dark";
+    packageName = "papirus-icon-theme";
+  };
+
+  terminalFont = {
     normal = {
       family = "Sauce Code Pro Nerd Font";
       style = "Semibold";

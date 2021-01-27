@@ -108,10 +108,12 @@
     #bluetooth.enable = true;
   };
 
+  # wallpaper at ~./background-image will be used
   services.xserver = {
     enable = true;
     videoDrivers = [ "nvidia" ];
     layout = "eu";
+    dpi = 115;
 
     # used to let home-manager handle xsession
     desktopManager = {
