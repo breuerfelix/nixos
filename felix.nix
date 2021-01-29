@@ -7,6 +7,7 @@ in {
     ./shell/vim.nix
     ./desktop/xresources.nix
     ./desktop/i3.nix
+    ./desktop/xdg.nix
   ];
 
   programs.home-manager.enable = true;
@@ -27,6 +28,7 @@ in {
       # terminal
       fd ripgrep
       xclip
+      python3 poetry
       #thefuck # TODO integration into shell via module
       universal-ctags
       podman podman-compose
@@ -154,6 +156,13 @@ in {
       #};
     };
 
+    chromium = {
+      enable = true;
+      extensions = [
+        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      ];
+    };
+
     obs-studio = {
       enable = true;
       #plugins = [ pkgs.obs-linuxbrowser ];
@@ -170,7 +179,7 @@ in {
         package = pkgs."${vars.icons.packageName}";
         size = "32x32";
       };
-      settings = {
+      settings = with vars.colors; {
         global = {
           word_wrap = true;
           show_age_threshold = 60;
@@ -184,22 +193,22 @@ in {
           geometry = "0x4-25+35";
 
           font = vars.font.name;
-          frame_color = "#${vars.colors.base05}";
-          separator_color = "#${vars.colors.base05}";
+          frame_color = "#${base05}";
+          separator_color = "#${base05}";
         };
         urgency_low = {
-            background = "#${vars.colors.base01}";
-            foreground = "#${vars.colors.base03}";
+            background = "#${base01}";
+            foreground = "#${base03}";
             timeout = 10;
         };
         urgency_normal = {
-            background = "#${vars.colors.base02}";
-            foreground = "#${vars.colors.base05}";
+            background = "#${base02}";
+            foreground = "#${base05}";
             timeout = 10;
         };
         urgency_critical = {
-            background = "#${vars.colors.base08}";
-            foreground = "#${vars.colors.base06}";
+            background = "#${base08}";
+            foreground = "#${base06}";
             timeout = 0;
         };
       };

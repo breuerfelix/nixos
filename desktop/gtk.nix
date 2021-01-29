@@ -11,36 +11,36 @@ let
   };
   materia_colors = pkgs.writeTextFile {
     name = "gtk-generated-colors";
-    text = ''
-      BTN_BG=${vars.colors.base02}
-      BTN_FG=${vars.colors.base06}
+    text = with vars.colors; ''
+      BTN_BG=${base02}
+      BTN_FG=${base06}
 
-      FG=${vars.colors.base05}
-      BG=${vars.colors.base00}
+      FG=${base05}
+      BG=${base00}
 
-      HDR_BTN_BG=${vars.colors.base01}
-      HDR_BTN_FG=${vars.colors.base05}
+      HDR_BTN_BG=${base01}
+      HDR_BTN_FG=${base05}
 
-      ACCENT_BG=${vars.colors.base0B}
-      ACCENT_FG=${vars.colors.base00}
+      ACCENT_BG=${base0B}
+      ACCENT_FG=${base00}
 
-      HDR_FG=${vars.colors.base05}
-      HDR_BG=${vars.colors.base02}
+      HDR_FG=${base05}
+      HDR_BG=${base02}
 
-      MATERIA_SURFACE=${vars.colors.base02}
-      MATERIA_VIEW=${vars.colors.base01}
+      MATERIA_SURFACE=${base02}
+      MATERIA_VIEW=${base01}
 
-      MENU_BG=${vars.colors.base02}
-      MENU_FG=${vars.colors.base06}
+      MENU_BG=${base02}
+      MENU_FG=${base06}
 
-      SEL_BG=${vars.colors.base0D}
-      SEL_FG=${vars.colors.base0E}
+      SEL_BG=${base0D}
+      SEL_FG=${base0E}
 
-      TXT_BG=${vars.colors.base02}
-      TXT_FG=${vars.colors.base06}
+      TXT_BG=${base02}
+      TXT_FG=${base06}
 
-      WM_BORDER_FOCUS=${vars.colors.base05}
-      WM_BORDER_UNFOCUS=${vars.colors.base03}
+      WM_BORDER_FOCUS=${base05}
+      WM_BORDER_UNFOCUS=${base03}
 
       UNITY_DEFAULT_LAUNCHER_STYLE=False
       NAME=generated

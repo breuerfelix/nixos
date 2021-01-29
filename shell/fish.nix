@@ -1,9 +1,13 @@
 { config, pkgs, lib, ... }: {
+  # TODO maybe switch back to zsh
   programs.fish = {
     enable = true;
     shellAliases = {
       weather = "curl -4 http://wttr.in/Koeln";
+      size = "du -sh";
+      cp = "cp -i";
     };
+    # TODO https://github.com/franciscolourenco/done
     interactiveShellInit = ''
       source /etc/nixos/shell/init.fish
 

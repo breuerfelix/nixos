@@ -10,26 +10,26 @@ in {
       package = pkgs.i3-gaps;
       # disable generation of default config
       config = null;
-      extraConfig = lib.strings.concatStrings [
+      extraConfig = with vars.colors; lib.strings.concatStrings [
         (lib.strings.fileContents ./i3.config)
         ''
           # base16 colorscheme
-          set $base00 #${vars.colors.base00}
-          set $base01 #${vars.colors.base01}
-          set $base02 #${vars.colors.base02}
-          set $base03 #${vars.colors.base03}
-          set $base04 #${vars.colors.base04}
-          set $base05 #${vars.colors.base05}
-          set $base06 #${vars.colors.base06}
-          set $base07 #${vars.colors.base07}
-          set $base08 #${vars.colors.base08}
-          set $base09 #${vars.colors.base09}
-          set $base0A #${vars.colors.base0A}
-          set $base0B #${vars.colors.base0B}
-          set $base0C #${vars.colors.base0C}
-          set $base0D #${vars.colors.base0D}
-          set $base0E #${vars.colors.base0E}
-          set $base0F #${vars.colors.base0F}
+          set $base00 #${base00}
+          set $base01 #${base01}
+          set $base02 #${base02}
+          set $base03 #${base03}
+          set $base04 #${base04}
+          set $base05 #${base05}
+          set $base06 #${base06}
+          set $base07 #${base07}
+          set $base08 #${base08}
+          set $base09 #${base09}
+          set $base0A #${base0A}
+          set $base0B #${base0B}
+          set $base0C #${base0C}
+          set $base0D #${base0D}
+          set $base0E #${base0E}
+          set $base0F #${base0F}
 
           # Property Name         Border  BG      Text    Indicator Child Border
           client.focused          $base05 $base0D $base00 $base0D $base0C

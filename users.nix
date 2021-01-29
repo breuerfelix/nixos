@@ -25,10 +25,11 @@
 
   # specific user configurations
   users = {
-    defaultUserShell = pkgs.fish;
+    #defaultUserShell = pkgs.fish;
     users.felix = {
       isNormalUser = true;
       home = "/home/felix";
+      shell = pkgs.fish;
       description = "scriptworld";
       extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ];
     };

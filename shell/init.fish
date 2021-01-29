@@ -18,12 +18,11 @@ alias car='cat'
 
 # programs
 alias nr='npm run'
-alias python='python3'
 alias py='python'
 alias pip='python3 -m pip'
 alias poe='poetry'
 alias nf='neofetch'
-alias ssh='TERM=screen ssh'
+alias ssh='TERM=screen command ssh'
 alias sc='sudo systemctl'
 alias scu='systemctl --user'
 alias shut='sudo shutdown -h now'
@@ -35,6 +34,10 @@ alias o='xdg-open'
 alias c='cargo'
 alias tssh='ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null'
 alias ydl='youtube-dl'
+
+# python
+alias cvenv='python -m venv .venv'
+alias venv='source .venv/bin/activate'
 
 # terraform
 alias tf='terraform'
@@ -68,17 +71,16 @@ alias del='rm -rf'
 alias sdel='sudo rm -rf'
 alias lst='ls --tree -I .git'
 alias lsl='ls -l'
-alias mkdir='mkdir -p'
-alias cp='cp -i' # confirm before overwrite
-alias df='df -h'
-alias free='free -h'
-alias du='du -sh'
+alias mkdir='command mkdir -p'
+#alias cp='command cp -i' # confirm before overwrite
+alias df='command df -h'
+alias free='command free -h'
+alias du='command du -sh'
 
 # console
 alias cl='clear'
 alias cs='clear;ls'
 alias null='/dev/null'
-alias res='source ~/.zshrc'
 alias psf='ps -aux | grep'
 
 function watch
@@ -99,7 +101,7 @@ function mkd
 end
 
 # tmux
-alias tmux='tmux -u'
+alias tmux='command tmux -u'
 alias tl='tmux ls'
 alias ta='tmux attach -t'
 alias ts='tmux new-session -s'
