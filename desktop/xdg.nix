@@ -15,8 +15,12 @@ in {
     mimeApps = {
       enable = true;
       defaultApplications = {
-        "text/uri-list" = [ "firefox.desktop" ];
-        #"text/x-uri" = [ "firefox.desktop" ];
+        "text/uri-list" = [ "firefox.desktop" "chromium.desktop" ];
+        "text/html" = [ "firefox.desktop" "chromium.desktop" ];
+        "x-scheme-handler/http" = [ "firefox.desktop" "chromium.desktop" ];
+        "x-scheme-handler/https" = [ "firefox.desktop" "chromium.desktop" ];
+        "x-scheme-handler/about" = [ "firefox.desktop" "chromium.desktop" ];
+        "x-scheme-handler/unknown" = [ "firefox.desktop" "chromium.desktop" ];
       };
     };
   };

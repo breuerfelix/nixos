@@ -6,6 +6,8 @@
       weather = "curl -4 http://wttr.in/Koeln";
       size = "du -sh";
       cp = "cp -i";
+      kc = "kubectl";
+      kci = "kubie";
     };
     # TODO https://github.com/franciscolourenco/done
     interactiveShellInit = ''

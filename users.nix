@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }: {
-
   imports = [
     <home-manager/nixos>
-    ./desktop/gtk.nix
+    ./desktop/gtk-theme.nix
   ];
 
   security.sudo.wheelNeedsPassword = false;

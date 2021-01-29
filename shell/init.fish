@@ -60,9 +60,6 @@ alias pc='podman-compose'
 
 alias dm='docker-machine'
 
-alias kc='kubectl'
-#complete -F __start_kubectl kc
-
 alias mk='minikube'
 alias kblocal='kubectl run -it --rm --restart=Never alpine --image=alpine sh'
 

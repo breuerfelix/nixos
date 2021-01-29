@@ -1,33 +1,10 @@
 { config, pkgs, ... }: {
-
-  imports = [ ./hardware.nix ./users.nix ];
+  imports = [
+    ./hardware.nix
+    ./users.nix
+  ];
 
   system.stateVersion = "20.09";
-
-  boot = {
-    # Use the GRUB 2 boot loader.
-    loader.grub = {
-
-      enable = true;
-      version = 2;
-      device = "nodev";
-      efiSupport = true;
-      # for detecting dual boot windows
-      useOSProber = true;
-    };
-
-    loader.efi.canTouchEfiVariables = true;
-
-    cleanTmpDir = true;
-    initrd.luks.devices = {
-      root = {
-        device = "/dev/disk/by-label/luks";
-        preLVM = true;
-        allowDiscards = true;
-      };
-    };
-  };
-
   nixpkgs.config.allowUnfree = true;
 
   nix = {
@@ -76,8 +53,7 @@
   environment = {
     systemPackages = with pkgs; [
       curl htop
-      git
-      neovim
+      git neovim
     ];
 
     variables = {
@@ -94,18 +70,17 @@
     };
   };
 
-  # sound
   # TODO fix bluetooth
-  #services.blueman.enable = true;
+  services.blueman.enable = true;
   sound.enable = true;
   hardware = {
     pulseaudio = {
       enable = true;
       package = pkgs.pulseaudioFull;
-      #extraModules = [ pkgs.pulseaudio-modules-bt ];
+      extraModules = [ pkgs.pulseaudio-modules-bt ];
     };
 
-    #bluetooth.enable = true;
+    bluetooth.enable = true;
   };
 
   # wallpaper at ~./background-image will be used
