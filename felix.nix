@@ -2,6 +2,7 @@
 let vars = import ./constants.nix;
 in {
   imports = [
+    ./modules/base16.nix
     ./shell/init.nix
     ./desktop/init.nix
   ];
@@ -39,5 +40,13 @@ in {
       veracrypt
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
     ];
+  };
+
+  programs.base16 = {
+    enable = true;
+    colors = vars.colors;
+
+    alacritty = true;
+    xresources = true;
   };
 }

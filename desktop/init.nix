@@ -2,7 +2,6 @@
 let vars = import ../constants.nix;
 in {
   imports = [
-    ./xresources.nix
     ./i3.nix
     ./xdg.nix
     ./dunst.nix
@@ -12,13 +11,13 @@ in {
     enable = true;
 
     font = {
-      name = vars.font.name;
-      package = pkgs."${vars.font.packageName}";
+      name = "Source Sans Pro 10";
+      package = pkgs.source-sans-pro;
     };
 
     iconTheme = {
-      name = vars.icons.name;
-      package = pkgs."${vars.icons.packageName}";
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
     };
 
     theme = {
@@ -31,6 +30,7 @@ in {
 
   programs = {
     rofi = {
+      # TODO generate theme
       enable = true;
       cycle = true;
       #font = vars.font.name;

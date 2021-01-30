@@ -4,8 +4,8 @@ in {
   services.dunst = {
     enable = true;
     iconTheme = {
-      name = vars.icons.name;
-      package = pkgs."${vars.icons.packageName}";
+      name = "Papirus-Dark";
+      package = pkgs.papirus-icon-theme;
       size = "32x32";
     };
 
@@ -22,7 +22,7 @@ in {
         format = "%s %p\\n%b";
         geometry = "0x4-25+35";
 
-        font = vars.font.name;
+        font = "Source Sans Pro 10";
         frame_color = "#${base05}";
         separator_color = "#${base05}";
       };
