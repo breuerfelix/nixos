@@ -23,24 +23,10 @@ in {
         geometry = "0x4-25+35";
 
         font = "Source Sans Pro 10";
-        frame_color = "#${base05}";
-        separator_color = "#${base05}";
       };
-      urgency_low = {
-          background = "#${base01}";
-          foreground = "#${base03}";
-          timeout = 10;
-      };
-      urgency_normal = {
-          background = "#${base02}";
-          foreground = "#${base05}";
-          timeout = 10;
-      };
-      urgency_critical = {
-          background = "#${base08}";
-          foreground = "#${base06}";
-          timeout = 0;
-      };
+      urgency_low = { timeout = 10; };
+      urgency_normal = { timeout = 10; };
+      urgency_critical = { timeout = 0; };
     };
   };
 }

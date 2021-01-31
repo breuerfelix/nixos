@@ -48,5 +48,7 @@ in {
 
     alacritty = true;
     xresources = true;
+    i3 = true;
+    dunst = true;
   };
 }

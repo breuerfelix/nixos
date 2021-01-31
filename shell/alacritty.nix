@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }:
-let vars = import ../constants.nix;
-in {
+{ config, pkgs, lib, ... }: {
   programs.alacritty = {
     enable = true;
     settings = {

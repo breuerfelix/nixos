@@ -7,12 +7,7 @@ let
 in {
   options = {
     programs.base16 = {
-      enable = mkOption {
-        default = false;
-        description = ''
-          Whether to enable base16 colors.
-        '';
-      };
+      enable = mkEnableOption "base16 colors.";
       colors = mkOption {
         type = types.submodule {
           options = {
@@ -45,6 +40,18 @@ in {
           Alacritty integration.
         '';
       };
+      dunst = mkOption {
+        default = false;
+        description = ''
+          Dunst integration.
+        '';
+      };
+      i3 = mkOption {
+        default = false;
+        description = ''
+          i3 integration.
+        '';
+      };
       xresources = mkOption {
         default = false;
         description = ''
@@ -54,6 +61,8 @@ in {
     };
   };
 
+  # TODO make cfg.colors available in whole config
+  # error: infinite recursion encountered when using config = with cfg.color
   config = mkIf cfg.enable {
     # https://github.com/aaron-williamson/base16-alacritty/blob/master/templates/default-256.mustache
     programs.alacritty.settings.colors = with cfg.colors; mkIf cfg.alacritty {
@@ -147,5 +156,68 @@ in {
       *color20:      base04
       *color21:      base06
     '';
-  };
+
+    # TODO convert to actual i3 home-manager config
+    xsession.windowManager.i3.extraConfig = with cfg.colors; mkIf cfg.i3 ''
+      set $base00 #${base00}
+      set $base01 #${base01}
+      set $base02 #${base02}
+      set $base03 #${base03}
+      set $base04 #${base04}
+      set $base05 #${base05}
+      set $base06 #${base06}
+      set $base07 #${base07}
+      set $base08 #${base08}
+      set $base09 #${base09}
+      set $base0A #${base0A}
+      set $base0B #${base0B}
+      set $base0C #${base0C}
+      set $base0D #${base0D}
+      set $base0E #${base0E}
+      set $base0F #${base0F}
+
+      # TODO implement bar in actual home-manager config with i3Bar = true
+      #bar {
+        #colors {
+          #background $base00
+          #separator  $base01
+          #statusline $base04
+          ## State             Border  BG      Text
+          #focused_workspace   $base05 $base0D $base00
+          #active_workspace    $base05 $base03 $base00
+          #inactive_workspace  $base03 $base01 $base05
+          #urgent_workspace    $base08 $base08 $base00
+          #binding_mode        $base00 $base0A $base00
+        #}
+      #}
+
+      # Property Name         Border  BG      Text    Indicator Child Border
+      client.focused          $base05 $base0D $base00 $base0D $base0C
+      client.focused_inactive $base01 $base01 $base05 $base03 $base01
+      client.unfocused        $base01 $base00 $base05 $base01 $base01
+      client.urgent           $base08 $base08 $base00 $base08 $base08
+      client.placeholder      $base00 $base00 $base05 $base00 $base00
+      client.background       $base07
+    '';
+
+    # https://github.com/khamer/base16-dunst/blob/master/templates/default.mustache
+    services.dunst.settings = with cfg.colors; mkIf cfg.dunst {
+      global = {
+        frame_color = "#${base05}";
+        separator_color = "#${base05}";
+      };
+      urgency_low = {
+          background = "#${base01}";
+          foreground = "#${base03}";
+      };
+      urgency_normal = {
+          background = "#${base02}";
+          foreground = "#${base05}";
+      };
+      urgency_critical = {
+          background = "#${base08}";
+          foreground = "#${base06}";
+      };
+    };
+  }; # end config
 }
