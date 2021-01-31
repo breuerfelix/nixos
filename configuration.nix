@@ -64,8 +64,8 @@
     # only nixos specific aliases here
     shellAliases = {
       ne = "nvim -c ':cd /etc/nixos' /etc/nixos";
-      ns = "sudo nixos-rebuild switch";
-      nsu = "sudo nixos-rebuild switch --upgrade";
+      nb = "sudo nixos-rebuild switch";
+      nbu = "nix-channel --update && sudo nixos-rebuild switch --upgrade";
       clean = "nix-collect-garbage";
     };
   };

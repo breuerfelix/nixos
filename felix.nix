@@ -38,6 +38,7 @@ in {
       ferdi
       blender
       veracrypt
+      vlc
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
     ];
   };
@@ -50,5 +51,9 @@ in {
     xresources = true;
     i3 = true;
     dunst = true;
+    fzf = true;
+    neovim = true;
+    neovim_airline = true;
+    #tmux = true;
   };
 }

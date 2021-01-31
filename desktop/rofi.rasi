@@ -7,8 +7,9 @@
     foregroundcolor: #ebdbb2;
     foregroundcolorinverse: #ebdbb2;
     selectioncolor: #504945;
+    bordercolor: #928374;
+    activecolor: #7c6f64;
 
-    font: "FuraMono Nerd Font Mono 12";
     border-color: @separatorcolor;
     background-color: @backgroundcolor;
     text-color: @foregroundcolor;
@@ -24,13 +25,12 @@
     margin: 0;
     dynamic: true;
     padding-top: 500;
-    /* lines: 10; */
 }
 
 #window {
     background-color: @backgroundcolor;
     border-color: @separatorcolor;
-    border-color: #928374;
+    border-color: @bordercolor;
     border: 4;
     border-radius: 0;
     width: 600;
@@ -63,11 +63,11 @@
 }
 
 #element.normal.active {
-    background-color: #7c6f64;
+    background-color: @activecolor;
 }
 
 #element.alternate.active {
-    background-color: #7c6f64;
+    background-color: @activecolor;
 }
 
 #element.selected.active {

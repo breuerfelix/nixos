@@ -1,6 +1,4 @@
-{ config, pkgs, lib, ... }:
-let vars = import ../constants.nix;
-in {
+{ config, pkgs, lib, ... }: {
   services.dunst = {
     enable = true;
     iconTheme = {
@@ -9,7 +7,7 @@ in {
       size = "32x32";
     };
 
-    settings = with vars.colors; {
+    settings = {
       global = {
         word_wrap = true;
         show_age_threshold = 60;

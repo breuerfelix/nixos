@@ -313,18 +313,7 @@ let g:airline_extensions = ['tabline']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
 
-"let g:onedark_terminal_italics = 1
-"let g:palenight_terminal_italics = 1
-
-let g:gruvbox_material_better_performance = 1
-let g:gruvbox_material_enable_bold = 1
-let g:gruvbox_material_enable_italic = 1
-let g:gruvbox_material_transparent_background = 0
-"colorscheme gruvbox-material
-colorscheme nord
-
 "override colorscheme
-
 "enable transparent background
 "highlight Normal ctermbg=NONE guibg=NONE
 

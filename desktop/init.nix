@@ -33,7 +33,7 @@ in {
       # TODO generate theme
       enable = true;
       cycle = true;
-      #font = vars.font.name;
+      font = "FuraMono Nerd Font Mono 12";
       lines = 5;
       theme = ./rofi.rasi;
       extraConfig = {
