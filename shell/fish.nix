@@ -1,11 +1,17 @@
 { config, pkgs, lib, ... }: {
+  # TODO maybe switch back to zsh
   programs.fish = {
     enable = true;
     shellAliases = {
       weather = "curl -4 http://wttr.in/Koeln";
+      size = "du -sh";
+      cp = "cp -i";
+      kc = "kubectl";
+      kci = "kubie";
     };
+    # TODO https://github.com/franciscolourenco/done
     interactiveShellInit = ''
-      source /etc/nixos/shell/bash.fish
+      source /etc/nixos/shell/init.fish
 
       set fish_greeting
 
@@ -13,6 +19,7 @@
       bind \v up-or-search
       bind \n down-or-search
       bind -k nul forward-char
+      bind \cE edit_command_buffer
 
       # colorscheme
       set -U fish_color_normal normal

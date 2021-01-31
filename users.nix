@@ -1,8 +1,7 @@
 { config, pkgs, lib, ... }: {
-
   imports = [
     <home-manager/nixos>
-    ./desktop/gtk.nix
+    ./desktop/gtk-theme.nix
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -14,6 +13,10 @@
     fish.enable = true;
   };
 
+  services = {
+    greenclip.enable = true;
+  };
+
   home-manager = {
     useUserPackages = true;
     useGlobalPkgs = true;
@@ -21,10 +24,11 @@
 
   # specific user configurations
   users = {
-    defaultUserShell = pkgs.fish;
+    #defaultUserShell = pkgs.fish;
     users.felix = {
       isNormalUser = true;
       home = "/home/felix";
+      shell = pkgs.fish;
       description = "scriptworld";
       extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ];
     };
