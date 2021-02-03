@@ -45,8 +45,6 @@ alias tfa='terraform apply -auto-approve'
 alias tfd='terraform destroy -auto-approve'
 
 # docker
-alias p='podman'
-alias d='docker'
 alias dke='docker exec -it'
 alias dklocal='docker run --rm -it -v {$PWD}:/usr/workdir --workdir=/usr/workdir'
 alias ld='lazydocker'

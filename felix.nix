@@ -26,20 +26,25 @@ in {
       fd ripgrep
       xclip
       python3 poetry
+      gnumake
+      nodejs
       # k8s
       kubectl kubernetes-helm
-      kubie istioctl
+      kubie
       #kubectx # TODO kubectx not working
       #thefuck # TODO integration into shell via module
       universal-ctags
-      podman podman-compose
-      bitwarden-cli
+      docker-compose
+      #podman podman-compose # TODO get podman to work
       # programs
       ferdi
       blender
       veracrypt
       vlc
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
+      # TEMP STUFF
+      istioctl
+      envoy
     ];
   };
 

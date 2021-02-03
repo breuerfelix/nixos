@@ -9,12 +9,28 @@
   programs = {
     # database for gtk applications
     dconf.enable = true;
+    nm-applet.enable = true;
+    npm.enable = true;
+
     # picks up shell alias
     fish.enable = true;
+    zsh.enable = true;
   };
 
   services = {
     greenclip.enable = true;
+  };
+
+  virtualisation = {
+    docker = {
+      enable = true;
+      enableOnBoot = true;
+      autoPrune = {
+        enable = true;
+        dates = "monthly";
+        flags = [ "--all" ];
+      };
+    };
   };
 
   home-manager = {
@@ -30,7 +46,7 @@
       home = "/home/felix";
       shell = pkgs.fish;
       description = "scriptworld";
-      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" ];
+      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" "docker" ];
     };
   };
 

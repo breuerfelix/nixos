@@ -8,6 +8,7 @@
       cp = "cp -i";
       kc = "kubectl";
       kci = "kubie";
+      dk = "docker";
     };
     # TODO https://github.com/franciscolourenco/done
     interactiveShellInit = ''

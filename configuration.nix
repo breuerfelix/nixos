@@ -18,12 +18,21 @@
 
   networking = {
     hostName = "rocky";
-    networkmanager.enable = true;
     useDHCP = false;
+    networkmanager.enable = true;
     interfaces.wlp7s0.useDHCP = true;
+
+    hosts = {
+      "173.212.222.231" = [ "con" "contabo" ];
+      "185.113.124.212" = [ "ics" ];
+    };
   };
 
-  time.timeZone = "Europe/Berlin";
+  time = {
+    timeZone = "Europe/Berlin";
+    # windows handles time in dual boot
+    hardwareClockInLocalTime = true;
+  };
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -50,10 +59,20 @@
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
+  # use neovim nightly
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
+    }))
+  ];
+
   environment = {
+    # completion for zsh
+    pathsToLink = [ "/share/zsh" ];
+
     systemPackages = with pkgs; [
       curl htop
-      git neovim
+      git neovim-nightly
     ];
 
     variables = {
@@ -67,10 +86,10 @@
       nb = "sudo nixos-rebuild switch";
       nbu = "nix-channel --update && sudo nixos-rebuild switch --upgrade";
       clean = "nix-collect-garbage";
+      nsh = "nix-shell";
     };
   };
 
-  # TODO fix bluetooth
   services.blueman.enable = true;
   sound.enable = true;
   hardware = {

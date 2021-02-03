@@ -14,14 +14,16 @@ in {
     mime.enable = true;
     mimeApps = {
       enable = true;
-      defaultApplications = {
-        "text/uri-list" = [ "firefox.desktop" "chromium.desktop" ];
-        "text/html" = [ "firefox.desktop" "chromium.desktop" ];
-        "x-scheme-handler/http" = [ "firefox.desktop" "chromium.desktop" ];
-        "x-scheme-handler/https" = [ "firefox.desktop" "chromium.desktop" ];
-        "x-scheme-handler/about" = [ "firefox.desktop" "chromium.desktop" ];
-        "x-scheme-handler/unknown" = [ "firefox.desktop" "chromium.desktop" ];
-      };
+      defaultApplications =
+        let browsers = [ "firefox.desktop" "chromium.desktop" ]; in {
+          "text/uri-list" = browsers;
+          "text/html" = browsers;
+          "x-scheme-handler/http" = browsers;
+          "x-scheme-handler/https" = browsers;
+          "x-scheme-handler/about" = browsers;
+          "x-scheme-handler/unknown" = browsers;
+          "application/pdf" = browsers;
+        };
     };
   };
 }

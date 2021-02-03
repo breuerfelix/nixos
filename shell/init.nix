@@ -4,17 +4,17 @@ in {
   imports = [
     ./alacritty.nix
     ./fish.nix
+    ./zsh.nix
     ./vim.nix
     ./tmux.nix
     ./git.nix
-    ./fzf.nix
   ];
 
+  # TODO default.nix demo https://nixos.org/#asciinema-demo-example_3
+  # shell integrations are enabled by default
   programs = {
-    autojump = {
-      enable = true;
-      enableFishIntegration = true;
-    };
+    autojump.enable = true;
+    jq.enable = true;
 
     lsd = {
       enable = true;
@@ -30,6 +30,19 @@ in {
     htop = {
       enable = true;
       treeView = true;
+    };
+
+    fzf = {
+      enable = true;
+      defaultCommand = "fd --type f --hidden --follow --exclude .git --exclude .vim --exclude .cache";
+      defaultOptions = [
+        "--border"
+        "--inline-info"
+      ];
+    };
+
+    go = {
+      enable = true;
     };
   };
 }
