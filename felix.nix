@@ -28,6 +28,14 @@ in {
       python3 poetry
       gnumake
       nodejs
+      tmate
+      ranger
+      nnn
+      # TODO fix taskell
+      #taskell
+      # useful terminal tools
+      termdown
+      hyperfine
       # k8s
       kubectl kubernetes-helm
       kubie
@@ -42,9 +50,6 @@ in {
       veracrypt
       vlc
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
-      # TEMP STUFF
-      istioctl
-      envoy
     ];
   };
 

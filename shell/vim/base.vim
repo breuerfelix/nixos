@@ -62,8 +62,9 @@ tnoremap jk <C-\><C-n>
 tnoremap <C-u> <C-\><C-n>:q<CR>
 
 "run current buffer
-autocmd filetype python noremap <CR> :below split <bar> :terminal python %<CR>
-autocmd filetype javascript,typescript noremap <CR> :below split <bar> :terminal node %<CR>
+autocmd filetype python nnoremap <CR> :below split <bar> :terminal python %<CR>
+autocmd filetype javascript,typescript nnoremap <CR> :below split <bar> :terminal node %<CR>
+"autocmd filetype go noremap <CR> :below split <bar> :terminal go run .<CR>
 
 "true colors
 set termguicolors
@@ -125,9 +126,31 @@ set noswapfile
 set noshowmode
 "automatically source .vimrc from project folder
 set exrc
+set secure
 
 "jump back to and forth
 noremap <leader>o <C-o>zz
 noremap <leader>i <C-i>zz
 
+"filetypes
+au BufRead,BufNewFile *.nix set filetype=nix
+
 set background=dark
+
+"
+" THEMING
+"
+
+"override colorscheme
+"enable transparent background
+"highlight Normal ctermbg=NONE guibg=NONE
+
+"render whitespace softer than comments
+highlight NonText guifg=grey22
+highlight Whitespace guifg=grey22
+highlight SpecialKey guifg=grey22
+
+"highlight only one character when line too long
+highlight ColorColumn ctermbg=grey guibg=grey25
+call matchadd('ColorColumn', '\%88v', 100)
+

@@ -20,7 +20,10 @@
     hostName = "rocky";
     useDHCP = false;
     networkmanager.enable = true;
-    interfaces.wlp7s0.useDHCP = true;
+    # nmcli device wifi -> lists available wifi networks
+    # nmcli device wifi connect "<wifi name>" password <wifi password>
+    # -> connects to a new wifi network
+    interfaces.wlp6s0.useDHCP = true;
 
     hosts = {
       "173.212.222.231" = [ "con" "contabo" ];
@@ -40,39 +43,13 @@
     keyMap = "us";
   };
 
-  # Some programs need SUID wrappers, can be configured further or are
-  # started in user sessions.
-  # programs.mtr.enable = true;
-  # programs.gnupg.agent = {
-  #   enable = true;
-  #   enableSSHSupport = true;
-  # };
-
-  # List services that you want to enable:
-
-  # Enable the OpenSSH daemon.
-  # services.openssh.enable = true;
-
-  # Open ports in the firewall.
-  # networking.firewall.allowedTCPPorts = [ ... ];
-  # networking.firewall.allowedUDPPorts = [ ... ];
-  # Or disable the firewall altogether.
-  # networking.firewall.enable = false;
-
-  # use neovim nightly
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
   environment = {
     # completion for zsh
     pathsToLink = [ "/share/zsh" ];
 
     systemPackages = with pkgs; [
       curl htop
-      git neovim-nightly
+      git neovim
     ];
 
     variables = {

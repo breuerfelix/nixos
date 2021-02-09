@@ -9,6 +9,8 @@
       kc = "kubectl";
       kci = "kubie";
       dk = "docker";
+      nvi = "nvim -u /etc/nixos/shell/backup.vim";
+      ew = "nvim -c ':cd ~/vimwiki' ~/vimwiki";
     };
     # TODO https://github.com/franciscolourenco/done
     interactiveShellInit = ''

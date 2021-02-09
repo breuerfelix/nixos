@@ -1,6 +1,6 @@
 { config, pkgs, lib, ... }: {
   programs.zsh = {
-    enable = true;
+    enable = false;
     enableAutosuggestions = true;
     enableCompletion = true;
     autocd = true;
@@ -29,7 +29,7 @@
     };
 
     prezto = {
-      enable = true;
+      enable = false;
       caseSensitive = false;
       utility.safeOps = true;
       editor = {

@@ -740,6 +740,7 @@ in {
     };
 
     # https://github.com/dawikur/base16-vim-airline-themes/blob/master/templates/default.mustache
+    # TODO fix this and write to plugin path
     xdg.configFile.neovim-airline-base16theme = with cfg.colors; mkIf cfg.neovim_airline {
       target = "nvim/autoload/airline/themes/base16.vim";
       text = ''

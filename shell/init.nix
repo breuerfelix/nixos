@@ -5,7 +5,7 @@ in {
     ./alacritty.nix
     ./fish.nix
     ./zsh.nix
-    ./vim.nix
+    ./vim/init.nix
     ./tmux.nix
     ./git.nix
   ];
