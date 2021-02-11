@@ -43,6 +43,16 @@ in {
 
     go = {
       enable = true;
+      # relative to $HOME
+      goPath = "go";
     };
   };
+
+  # setting the go path
+  home = {
+    # TODO refer to $HOME
+    sessionPath = [ "/home/felix/go/bin" ];
+    sessionVariables.GOROOT = [ "${pkgs.go.out}/share/go" ];
+  };
+
 }

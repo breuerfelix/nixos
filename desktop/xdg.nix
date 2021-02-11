@@ -22,6 +22,7 @@ in {
           "x-scheme-handler/https" = browsers;
           "x-scheme-handler/about" = browsers;
           "x-scheme-handler/unknown" = browsers;
+          "x-scheme-handler/discord" = [ "discord.desktop" ];
           "application/pdf" = browsers;
         };
     };

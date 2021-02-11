@@ -9,6 +9,7 @@
       kc = "kubectl";
       kci = "kubie";
       dk = "docker";
+      pd = "podman";
       nvi = "nvim -u /etc/nixos/shell/backup.vim";
       ew = "nvim -c ':cd ~/vimwiki' ~/vimwiki";
     };

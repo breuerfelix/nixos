@@ -8,34 +8,48 @@ let g:which_key_map['c'] = { 'name': 'commenter' }
 
 set timeoutlen=500
 set signcolumn=yes
-set completeopt=menu,menuone,noselect
 
 map <leader>b :NERDTreeToggle<CR>
 nmap <C-f> :Rg<CR>
+nmap <leader>ln :noh<CR>
+nmap <leader>ls :s/"/'/g<bar>:noh<CR>
+nmap <leader>lf :ALEFix<CR>
+nmap <leader>lg :GrammarousCheck<CR>
+nmap <leader>lr :GrammarousReset<CR>
+nmap <leader>lt :OpenTodo<CR>
+let g:which_key_map['l'] = { 'name': 'linting / syntax' }
+
+let g:spacevim_todo_labels = [
+\  'FIXME',
+\  'TODO',
+\]
 
 " fuzzy finder for wilder menu
-call wilder#set_option('pipeline', [
-\  wilder#branch(
-\    wilder#cmdline_pipeline({
-\      'fuzzy': 1,
-\      'use_python': 1,
-\    }),
-\    wilder#python_search_pipeline({
-\      'regex': 'fuzzy',
-\      'engine': 're',
-\      'sort': function('wilder#python_sort_difflib'),
-\    }),
-\  ),
-\])
+"call wilder#set_option('pipeline', [
+"\  wilder#branch(
+"\    wilder#cmdline_pipeline({
+"\      'fuzzy': 1,
+"\      'use_python': 1,
+"\    }),
+"\    wilder#python_search_pipeline({
+"\      'regex': 'fuzzy',
+"\      'engine': 're',
+"\      'sort': function('wilder#python_sort_difflib'),
+"\    }),
+"\  ),
+"\])
 
-"command completion
-call wilder#enable_cmdline_enter()
-set wildcharm=<Tab>
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-
+""command completion
+"call wilder#enable_cmdline_enter()
+"set wildcharm=<Tab>
+"cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
+"cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
 " only / and ? is enabled by default
-call wilder#set_option('modes', ['/', '?', ':'])
+"call wilder#set_option('modes', ['/', '?', ':'])
+
+"better wildmenu
+set wildmenu
+set wildmode=longest:list,full
 
 "vimwiki
 let g:vimwiki_list = [{'path': '~/vimwiki/',

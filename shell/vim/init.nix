@@ -20,6 +20,8 @@ in {
     extraConfig = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./base.vim)
       (lib.strings.fileContents ./plugins.vim)
+      (lib.strings.fileContents ./coc.vim)
+      # include ./lsp.lua and ./lsp.vim for neovim nightly lsp
       ''
         lua << EOF
         ${lib.strings.fileContents ./config.lua}
@@ -32,37 +34,50 @@ in {
       # for telescope
       # TODO add telescope
       #bat ripgrep fd
+
       # language servers
-      nodePackages.typescript
-      nodePackages.typescript-language-server
-      rnix-lsp
-      gopls
+      #nodePackages.typescript
+      #nodePackages.typescript-language-server
+      #rnix-lsp
+      #gopls
     ];
     plugins = with pkgs.vimPlugins; [
       vim-which-key
-      nvim-lspconfig
+
+      # lsp
+      #nvim-lspconfig
+      #vim-vsnip
+      #nvim-compe
+      #nvim-web-devicons
+      #(plugin "nvim-autopairs" "windwp/nvim-autopairs")
+
+      # coc
+      coc-nvim
+
       nvim-treesitter
       # TODO fix context
       #nvim-treesitter-context
-      vim-vsnip
-      nvim-compe
-      nvim-web-devicons
+
       vim-airline
       fzfWrapper
       fzf-vim
       (plugin "colorizer-lua" "norcalli/nvim-colorizer.lua")
-      (plugin "nvim-autopairs" "windwp/nvim-autopairs")
-      nerdtree
-      # TODO configure nvim tree lua
-      #nvim-tree-lua
       (plugin "clever-f" "rhysd/clever-f.vim")
-      (plugin "vim-todo" "wsdjeg/vim-todo")
-      (plugin "startuptime" "dstein64/vim-startuptime")
+      # TODO fix wilder (:UpdateRemotePlugins does not work)
+      #(plugin "wilder" "gelguy/wilder.nvim")
       vim-better-whitespace
       vim-sleuth
       nerdcommenter
-      (plugin "wilder" "gelguy/wilder.nvim")
+
+      # TODO lazyload
       vimwiki
+      vim-grammarous
+      (plugin "startuptime" "dstein64/vim-startuptime")
+      (plugin "vim-todo" "wsdjeg/vim-todo")
+      nerdtree
+
+      # TODO configure nvim tree lua
+      #nvim-tree-lua
     ];
   };
 }

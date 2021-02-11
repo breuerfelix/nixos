@@ -27,15 +27,17 @@ in {
       xclip
       python3 poetry
       gnumake
-      nodejs
+      nodejs yarn
+      nodePackages.expo-cli
       tmate
       ranger
       nnn
       # TODO fix taskell
       #taskell
       # useful terminal tools
-      termdown
-      hyperfine
+      termdown # terminal countdown
+      hyperfine # performance test tool
+
       # k8s
       kubectl kubernetes-helm
       kubie
@@ -43,12 +45,20 @@ in {
       #thefuck # TODO integration into shell via module
       universal-ctags
       docker-compose
-      #podman podman-compose # TODO get podman to work
+      podman-compose
+
       # programs
+      firefox # TODO replace with programs.
       ferdi
       blender
       veracrypt
       vlc
+      unityhub
+      zotero
+      android-studio
+
+      #obsidian # gui for knowledge base
+      #yuzu-ea # nintendo switch emulator
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
     ];
   };

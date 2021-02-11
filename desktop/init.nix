@@ -45,8 +45,10 @@
       };
     };
 
-    firefox = {
-      enable = true;
+    # TODO fix firefox
+    #firefox = {
+      #enable = true;
+      #enableAdobeFlash = false;
       # TODO fix this error message "profile is not accessible"
       #profiles.felix = {
         #id = 4711;
@@ -56,7 +58,7 @@
           #"ui.context_menus.after_mouseup" = true;
         #};
       #};
-    };
+    #};
 
     chromium = {
       enable = true;

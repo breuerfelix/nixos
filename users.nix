@@ -11,6 +11,7 @@
     dconf.enable = true;
     nm-applet.enable = true;
     npm.enable = true;
+    adb.enable = true;
 
     # picks up shell alias
     fish.enable = true;
@@ -22,9 +23,12 @@
   };
 
   virtualisation = {
+    libvirtd.enable = true;
+    podman.enable = true;
     docker = {
       enable = true;
-      enableOnBoot = true;
+      # use podman if possible
+      enableOnBoot = false;
       autoPrune = {
         enable = true;
         dates = "monthly";
@@ -46,7 +50,12 @@
       home = "/home/felix";
       shell = pkgs.fish;
       description = "scriptworld";
-      extraGroups = [ "wheel" "networkmanager" "audio" "dialout" "docker" ];
+      extraGroups = [
+        "wheel" "networkmanager"
+        "audio" "dialout"
+        "docker" "libvirtd"
+        "adbusers"
+      ];
     };
   };
 
