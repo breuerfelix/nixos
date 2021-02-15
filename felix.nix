@@ -19,7 +19,7 @@ in {
     packages = with pkgs; [
       # system
       nerdfonts corefonts
-      pavucontrol
+      pavucontrol pasystray
       pcmanfm
       libnotify
       # terminal

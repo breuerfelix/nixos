@@ -69,14 +69,27 @@
 
   services.blueman.enable = true;
   sound.enable = true;
+
   hardware = {
+    bluetooth.enable = true;
     pulseaudio = {
       enable = true;
+      # use full build for bluetooth support
       package = pkgs.pulseaudioFull;
       extraModules = [ pkgs.pulseaudio-modules-bt ];
+      daemon.config = {
+        # this fixes audio stuttering with bluetooth headset + mouse
+        default-sample-rate = 48000;
+        default-fragments = 8;
+        default-fragment-size-msec = 10;
+        # TODO check if those values are also needed for this fix
+        # source: https://forums.linuxmint.com/viewtopic.php?t=44862
+        high-priority = "yes";
+        nice-level = -15;
+        realtime-scheduling = "yes";
+        realtime-priority = 1;
+      };
     };
-
-    bluetooth.enable = true;
   };
 
   # wallpaper at ~./background-image will be used

@@ -32,7 +32,7 @@ let g:coc_global_extensions = [
 "\  'coc-git',
 \  'coc-pairs',
 \  'coc-vimlsp',
-\  'coc-python',
+\  'coc-pyright',
 \  'coc-lua',
 \  'coc-sh',
 \  'coc-yaml',

@@ -53,6 +53,7 @@ in {
 
       # coc
       coc-nvim
+      coc-fzf
 
       nvim-treesitter
       # TODO fix context
