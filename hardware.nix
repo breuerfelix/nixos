@@ -42,6 +42,15 @@
       device = "/dev/disk/by-label/boot";
       fsType = "vfat";
     };
+
+    "/data" = {
+      device = "/dev/disk/by-label/DATA";
+      fsType = "exfat";
+      options = [
+        "defaults"
+        "uid=1000" "gid=100"
+      ];
+    };
   };
 
   swapDevices = [{ device = "/dev/disk/by-label/swap"; }];

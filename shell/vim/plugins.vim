@@ -10,13 +10,14 @@ set timeoutlen=500
 set signcolumn=yes
 
 map <leader>b :NERDTreeToggle<CR>
-nmap <C-f> :Rg<CR>
+nmap <leader>s :Rg<CR>
 nmap <leader>ln :noh<CR>
 nmap <leader>ls :s/"/'/g<bar>:noh<CR>
 nmap <leader>lf :ALEFix<CR>
 nmap <leader>lg :GrammarousCheck<CR>
 nmap <leader>lr :GrammarousReset<CR>
 nmap <leader>lt :OpenTodo<CR>
+"TODO doesn't work
 let g:which_key_map['l'] = { 'name': 'linting / syntax' }
 
 let g:spacevim_todo_labels = [

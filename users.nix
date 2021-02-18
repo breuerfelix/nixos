@@ -35,6 +35,11 @@
         flags = [ "--all" ];
       };
     };
+
+    virtualbox.host = {
+      enable = true;
+      enableExtensionPack = true;
+    };
   };
 
   home-manager = {
@@ -53,7 +58,7 @@
       extraGroups = [
         "wheel" "networkmanager"
         "audio" "dialout"
-        "docker" "libvirtd"
+        "docker" "libvirtd" "vboxusers"
         "adbusers"
       ];
     };

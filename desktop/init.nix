@@ -75,10 +75,10 @@
       vSync = true;
       backend = "glx";
       experimentalBackends = true;
-      shadow = true;
-      noDNDShadow = false;
-      noDockShadow = true;
-      shadowExclude = [ "class_g = 'i3-frame'" ];
+      #shadow = true;
+      #noDNDShadow = false;
+      #noDockShadow = true;
+      #shadowExclude = [ "class_g = 'i3-frame'" ];
     };
 
     redshift = {
@@ -87,9 +87,9 @@
       # germany -> kölle
       latitude = "50.935173";
       longitude = "6.953101";
-      brightness = {
-        night = "0.8";
-        day = "1";
+      settings.redshift = {
+        brightness-night = "0.8";
+        brightness-day = "1";
       };
       temperature = {
         night = 3700;

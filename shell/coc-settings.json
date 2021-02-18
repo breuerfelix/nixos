@@ -8,6 +8,10 @@
       ],
       "initializationOptions": {},
       "settings": {}
+    },
+    "nix": {
+      "command": "/home/felix/programs/rnix-lsp/target/release/rnix-lsp",
+      "filetypes": [ "nix"]
     }
   },
   "javascript.suggest.names": false,

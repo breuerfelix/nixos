@@ -31,15 +31,14 @@ in {
     extraPackages = with pkgs; [
       # for compilation of treesitter
       gcc clang curl git
+
       # for telescope
       # TODO add telescope
       #bat ripgrep fd
 
-      # language servers
-      #nodePackages.typescript
-      #nodePackages.typescript-language-server
-      #rnix-lsp
-      #gopls
+      # extra language servers
+      #rnix-lsp TODO wait until merge of branch
+      terraform-lsp
     ];
     plugins = with pkgs.vimPlugins; [
       vim-which-key
@@ -54,6 +53,7 @@ in {
       # coc
       coc-nvim
       coc-fzf
+      vimtex
 
       nvim-treesitter
       # TODO fix context
@@ -68,6 +68,7 @@ in {
       #(plugin "wilder" "gelguy/wilder.nvim")
       vim-better-whitespace
       vim-sleuth
+      vim-smoothie
       nerdcommenter
 
       # TODO lazyload
@@ -75,9 +76,9 @@ in {
       vim-grammarous
       (plugin "startuptime" "dstein64/vim-startuptime")
       (plugin "vim-todo" "wsdjeg/vim-todo")
-      nerdtree
 
       # TODO configure nvim tree lua
+      nerdtree
       #nvim-tree-lua
     ];
   };

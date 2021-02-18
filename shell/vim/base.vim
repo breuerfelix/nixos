@@ -13,8 +13,8 @@ noremap <C-c> <S-j>
 "faster scrolling
 noremap <S-j> 4jzz
 noremap <S-k> 4kzz
-"nnoremap <S-j> <C-d>zz
-"nnoremap <S-k> <C-u>zz
+"nmap <C-d> <C-d>
+nmap <C-f> <C-u>
 
 "buffer
 map <C-n> :bnext<CR>
@@ -35,8 +35,8 @@ noremap <silent> <C-i> :w<CR>
 cmap w!! w !sudo tee > /dev/null %
 
 "quit
-noremap <C-u> :q<CR>
-inoremap <C-u> <Esc>:q<CR>
+nmap <C-u> :q<CR>
+imap <C-u> <Esc>:q<CR>
 
 "splits
 function! WinMove(key)
@@ -114,6 +114,7 @@ set smartcase
 set cursorline
 set laststatus=2
 set scrolloff=8
+set startofline
 
 augroup save_when_leave
     au BufLeave * silent! wall

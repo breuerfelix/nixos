@@ -19,9 +19,11 @@ in {
     packages = with pkgs; [
       # system
       nerdfonts corefonts
-      pavucontrol pasystray
-      pcmanfm
-      libnotify
+      pavucontrol pasystray # pulseaudio
+      pcmanfm # filebrowser
+      libnotify # used for notifications
+      ncdu # checks system size
+
       # terminal
       fd ripgrep
       xclip
@@ -29,6 +31,7 @@ in {
       gnumake
       nodejs yarn
       nodePackages.expo-cli
+      # preact-cli global installation
       tmate
       ranger
       nnn
@@ -48,18 +51,24 @@ in {
       podman-compose
 
       # programs
-      firefox # TODO replace with programs.
+      firefox # TODO replace with programs.firefox
       ferdi
+      insync # google drive sync
       blender
       veracrypt
       vlc
       unityhub
       zotero
       android-studio
+      zoom-us
 
       #obsidian # gui for knowledge base
       #yuzu-ea # nintendo switch emulator
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
+
+      # temp
+      openssl # used for outline wiki
+      #texlive.combined.scheme-basic# latex
     ];
   };
 

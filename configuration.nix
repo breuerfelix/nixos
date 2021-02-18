@@ -12,7 +12,7 @@
     gc = {
       automatic = true;
       dates = "weekly";
-      options = "--delete-older-than 30d";
+      options = "--delete-older-than 7d";
     };
   };
 
@@ -61,7 +61,7 @@
     shellAliases = {
       ne = "nvim -c ':cd /etc/nixos' /etc/nixos";
       nb = "sudo nixos-rebuild switch";
-      nbu = "nix-channel --update && sudo nixos-rebuild switch --upgrade";
+      nbu = "sudo nixos-rebuild switch --upgrade-all";
       clean = "nix-collect-garbage";
       nsh = "nix-shell";
     };
