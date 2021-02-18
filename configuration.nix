@@ -62,7 +62,7 @@
       ne = "nvim -c ':cd /etc/nixos' /etc/nixos";
       nb = "sudo nixos-rebuild switch";
       nbu = "sudo nixos-rebuild switch --upgrade-all";
-      clean = "nix-collect-garbage";
+      clean = "sudo nix-collect-garbage";
       nsh = "nix-shell";
     };
   };
