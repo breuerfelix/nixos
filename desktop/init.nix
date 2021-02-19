@@ -37,12 +37,18 @@
       # TODO generate theme
       # TODO use with config.lib.formats.rasi;
       theme = ./rofi.rasi;
-      extraConfig = {
-        kb-remove-to-eol = "";
-        kb-accept-entry = "Return";
-        kb-row-up = "Control+k";
-        kb-row-down = "Control+j";
-      };
+      #extraConfig = {
+        #kb-remove-to-eol = "";
+        #kb-accept-entry = "Return";
+        #kb-row-up = "Control+k";
+        #kb-row-down = "Control+j";
+      #};
+      extraConfig = ''
+        kb-remove-to-eol: "";
+        kb-accept-entry: "Return";
+        kb-row-up: "Control+k";
+        kb-row-down: "Control+j";
+      '';
     };
 
     # TODO fix firefox
@@ -62,8 +68,11 @@
 
     chromium = {
       enable = true;
+      #extensions = [
+        #{ id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+      #];
       extensions = [
-        { id = "cjpalhdlnbpafiamejdnhcphjbkeiagm"; } # ublock origin
+        "cjpalhdlnbpafiamejdnhcphjbkeiagm" # ublock origin
       ];
     };
   };
@@ -87,10 +96,14 @@
       # germany -> kölle
       latitude = "50.935173";
       longitude = "6.953101";
-      settings.redshift = {
-        brightness-night = "0.8";
-        brightness-day = "1";
+      brightness = {
+        day = "1";
+        night = "0.8";
       };
+      #settings.redshift = {
+        #brightness-night = "0.8";
+        #brightness-day = "1";
+      #};
       temperature = {
         night = 3700;
         day = 5500;

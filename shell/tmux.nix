@@ -1,8 +1,10 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let unstable = import <nixos-unstable> {};
+in {
   programs.tmux = {
     enable = true;
-    plugins = with pkgs; [ tmuxPlugins.nord ];
-    prefix = "C-o";
+    plugins = with unstable; [ tmuxPlugins.nord ];
+    shortcut = "o";
     baseIndex = 1;
     escapeTime = 0;
     historyLimit = 10000;

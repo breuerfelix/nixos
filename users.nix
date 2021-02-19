@@ -1,6 +1,13 @@
-{ config, pkgs, lib, ... }: {
+{ config, pkgs, lib, ... }:
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+  home-manager = builtins.fetchGit {
+    url = "https://github.com/rycee/home-manager.git";
+    ref = "release-20.09";
+  };
+in {
   imports = [
-    <home-manager/nixos>
+    (import "${home-manager}/nixos")
     ./desktop/gtk-theme.nix
   ];
 
@@ -14,7 +21,7 @@
     adb.enable = true;
 
     # picks up shell alias
-    fish.enable = true;
+    fish.enable = false;
     zsh.enable = true;
   };
 
@@ -53,7 +60,7 @@
     users.felix = {
       isNormalUser = true;
       home = "/home/felix";
-      shell = pkgs.fish;
+      shell = pkgs.zsh;
       description = "scriptworld";
       extraGroups = [
         "wheel" "networkmanager"
@@ -73,4 +80,10 @@
       url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
     }))
   ];
+
+  # unstable package overrides
+  nixpkgs.config.packageOverrides = pkgs: {
+    fzf = unstable.fzf;
+    alacritty = unstable.alacritty;
+  };
 }

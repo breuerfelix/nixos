@@ -1,7 +1,7 @@
 { config, pkgs, lib, ... }: {
   # TODO maybe switch back to zsh
   programs.fish = {
-    enable = true;
+    enable = false;
     shellAliases = {
       weather = "curl -4 http://wttr.in/Koeln";
       size = "du -sh";

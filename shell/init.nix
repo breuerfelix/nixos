@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
-let vars = import ../constants.nix;
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   imports = [
     ./alacritty.nix

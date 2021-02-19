@@ -89,7 +89,9 @@ in {
   # error: infinite recursion encountered when using config = with cfg.color
   config = mkIf cfg.enable {
     # https://github.com/aaron-williamson/base16-alacritty/blob/master/templates/default-256.mustache
-    programs.alacritty.settings.colors = with cfg.colors; mkIf cfg.alacritty {
+    # TODO fix it and readd the mkIf
+    #programs.alacritty.settings.colors = with cfg.colors; mkIf cfg.alacritty {
+    programs.alacritty.settings.colors = with cfg.colors; {
       primary = {
         background = "0x${base00}";
         foreground = "0x${base05}";

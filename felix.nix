@@ -1,5 +1,7 @@
 { config, pkgs, lib, ... }:
-let vars = import ./constants.nix;
+let
+  vars = import ./constants.nix;
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   imports = [
     ./modules/base16.nix
@@ -24,13 +26,17 @@ in {
       libnotify # used for notifications
       ncdu # checks system size
 
+      # compiler
+      gnumake
+
       # terminal
       fd ripgrep
       xclip
       python3 poetry
-      gnumake
+      #tectonic # latex builder
+      cargo
       nodejs yarn
-      nodePackages.expo-cli
+      unstable.nodePackages.expo-cli
       # preact-cli global installation
       tmate
       ranger
@@ -40,6 +46,7 @@ in {
       # useful terminal tools
       termdown # terminal countdown
       hyperfine # performance test tool
+      tectonic # latex
 
       # k8s
       kubectl kubernetes-helm
@@ -67,8 +74,8 @@ in {
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
 
       # temp
-      openssl # used for outline wiki
       #texlive.combined.scheme-basic# latex
+      python38Packages.pygments
     ];
   };
 

@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 let
+  unstable = import <nixos-unstable> {};
   plugin = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-plugin-${name}";
     version = "git";
@@ -11,6 +12,7 @@ in {
   programs.neovim = {
     enable = true;
     package = pkgs.neovim-nightly;
+    viAlias = true;
     withNodeJs = true;
     withPython = true;
     withPython3 = true;
@@ -40,7 +42,7 @@ in {
       #rnix-lsp TODO wait until merge of branch
       terraform-lsp
     ];
-    plugins = with pkgs.vimPlugins; [
+    plugins = with unstable.vimPlugins; [
       vim-which-key
 
       # lsp
