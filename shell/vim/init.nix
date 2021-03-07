@@ -49,7 +49,6 @@ in {
       #nvim-lspconfig
       #vim-vsnip
       #nvim-compe
-      #nvim-web-devicons
       #(plugin "nvim-autopairs" "windwp/nvim-autopairs")
 
       # coc
@@ -58,8 +57,16 @@ in {
       vimtex
 
       nvim-treesitter
+      (plugin "nvim-ts-rainbow" "p00f/nvim-ts-rainbow") # bracket highlighting
+
       # TODO fix context
       #nvim-treesitter-context
+
+      # telescope
+      (plugin "lua-popup" "nvim-lua/popup.nvim")
+      (plugin "lua-plenary" "nvim-lua/plenary.nvim")
+      (plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
+      nvim-web-devicons
 
       vim-airline
       fzfWrapper
@@ -73,15 +80,21 @@ in {
       vim-smoothie
       nerdcommenter
 
+      emmet-vim
+
       # TODO lazyload
       vimwiki
       vim-grammarous
       (plugin "startuptime" "dstein64/vim-startuptime")
       (plugin "vim-todo" "wsdjeg/vim-todo")
+      goyo-vim
+      limelight-vim
 
       # TODO configure nvim tree lua
       nerdtree
       #nvim-tree-lua
+
+      vim-devicons
     ];
   };
 }

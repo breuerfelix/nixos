@@ -37,6 +37,7 @@
       # TODO generate theme
       # TODO use with config.lib.formats.rasi;
       theme = ./rofi.rasi;
+      # new config when using unstable
       #extraConfig = {
         #kb-remove-to-eol = "";
         #kb-accept-entry = "Return";

@@ -25,28 +25,47 @@ in {
       pcmanfm # filebrowser
       libnotify # used for notifications
       ncdu # checks system size
+      zip unzip p7zip
+      translate-shell # used for rofi-translate
+      bind # dns utils
+      telnet nmap
+      #qmk_firmware # flash keyboard marked as broken
 
       # compiler
       gnumake
+      gcc
 
       # terminal
       fd ripgrep
       xclip
-      python3 poetry
-      #tectonic # latex builder
-      cargo
-      nodejs yarn
+      gitAndTools.delta
+      unstable.starship # cross-shell prompt
+      cht-sh # interactive terminal cheat sheet
+
+      cargo # rust
+
+      # node tools
+      nodejs yarn # npm is built into nodejs
       unstable.nodePackages.expo-cli
-      # preact-cli global installation
+      # TODO preact-cli global installation
+
+      # python tool
+      python3 poetry # python
+      #python38Packages.pip
+      #python38Packages.setuptools
+      #python38Packages.wheel
+
       tmate
       ranger
       nnn
       # TODO fix taskell
       #taskell
+
       # useful terminal tools
       termdown # terminal countdown
       hyperfine # performance test tool
-      tectonic # latex
+      tectonic # latex compiler
+      python38Packages.pygments # latex syntac highlighting
 
       # k8s
       kubectl kubernetes-helm
@@ -59,23 +78,22 @@ in {
 
       # programs
       firefox # TODO replace with programs.firefox
-      ferdi
+      ferdi # messenger all-in-one
       insync # google drive sync
       blender
-      veracrypt
-      vlc
+      veracrypt # cross-platform drive encryption
+      vlc # media player
       unityhub
-      zotero
+      zotero # latex bib manager
       android-studio
       zoom-us
+      teamviewer
+      #quicksynergy # share mouse and keyboard events
+      synergy
 
       #obsidian # gui for knowledge base
       #yuzu-ea # nintendo switch emulator
       # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
-
-      # temp
-      #texlive.combined.scheme-basic# latex
-      python38Packages.pygments
     ];
   };
 

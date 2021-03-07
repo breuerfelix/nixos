@@ -11,10 +11,10 @@ vnoremap u <Esc>
 noremap <C-c> <S-j>
 
 "faster scrolling
-noremap <S-j> 4jzz
-noremap <S-k> 4kzz
+noremap <S-j> 3jzz
+noremap <S-k> 3kzz
 "nmap <C-d> <C-d>
-nmap <C-f> <C-u>
+"nmap <C-f> <C-u>
 
 "buffer
 map <C-n> :bnext<CR>
@@ -150,6 +150,8 @@ set background=dark
 highlight NonText guifg=grey22
 highlight Whitespace guifg=grey22
 highlight SpecialKey guifg=grey22
+"TODO choose a good color for comments
+highlight Comment guifg=grey
 
 "highlight only one character when line too long
 highlight ColorColumn ctermbg=grey guibg=grey25

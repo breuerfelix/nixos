@@ -49,6 +49,7 @@ let g:coc_global_extensions = [
 \  'coc-go',
 "\  'coc-java',
 \  'coc-vimtex',
+\  'coc-emmet',
 \]
 
 inoremap <silent><expr> <C-space> coc#refresh()

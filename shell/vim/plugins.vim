@@ -1,6 +1,7 @@
 "whichkey
 let g:which_key_map = {}
-autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+"autocmd! User vim-which-key call which_key#register('<Space>', 'g:which_key_map')
+call which_key#register('<Space>', 'g:which_key_map')
 
 nnoremap <silent> <leader> :WhichKey '<Space>'<CR>
 vnoremap <silent> <leader> :WhichKeyVisual '<Space>'<CR>
@@ -24,6 +25,21 @@ let g:spacevim_todo_labels = [
 \  'FIXME',
 \  'TODO',
 \]
+
+"improve writing
+function! s:goyo_enter()
+  set nolist
+  Limelight
+endfunction
+
+function! s:goyo_leave()
+  set nolist
+  Limelight!
+endfunction
+
+noremap <silent> <leader>g :Goyo<CR>
+autocmd! User GoyoEnter nested call <SID>goyo_enter()
+autocmd! User GoyoLeave nested call <SID>goyo_leave()
 
 " fuzzy finder for wilder menu
 "call wilder#set_option('pipeline', [
@@ -62,7 +78,20 @@ nmap <leader>wj <Plug>VimwikiNextLink
 nmap <leader>wk <Plug>VimwikiPrevLink
 let g:which_key_map['w'] = { 'name': 'vimwiki' }";
 
+"vim smoothie
+nmap <C-d> <Plug>(SmoothieDownwards)
+nmap <C-f> <Plug>(SmoothieUpwards)
+let g:smoothie_no_default_mappings = 1
+
+"use single quotes in emmet
+"let g:user_emmet_settings = { 'html': { 'quote_char': "'", }, }
+let g:user_emmet_leader_key = '<C-e>'
+
+"fzf
+let g:fzf_layout = { 'window': { 'border': 'sharp', 'width': 0.9, 'height': 0.6 } }
+
 "disable all extensions for a minimal setup
+
 let g:airline_extensions = ['tabline']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1

@@ -4,6 +4,11 @@
     ./users.nix
   ];
 
+  # channels -> add them with SUDO !
+  # sudo nix-channel --list
+  # nixos https://nixos.org/channels/nixos-20.09
+  # nixos-unstable https://nixos.org/channels/nixos-unstable
+
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
@@ -17,6 +22,12 @@
   };
 
   networking = {
+    firewall = {
+      enable = true;
+      allowPing = false;
+      # used for synergy
+      allowedTCPPorts = [ 24800 ];
+    };
     hostName = "rocky";
     useDHCP = false;
     networkmanager.enable = true;
@@ -78,7 +89,8 @@
       package = pkgs.pulseaudioFull;
       extraModules = [ pkgs.pulseaudio-modules-bt ];
       daemon.config = {
-        # this fixes audio stuttering with bluetooth headset + mouse
+        # this fixes audio stuttering
+        # when using bluetooth headset + bluetooth mouse at the same time
         default-sample-rate = 48000;
         default-fragments = 8;
         default-fragment-size-msec = 10;
@@ -97,7 +109,13 @@
     enable = true;
     videoDrivers = [ "nvidia" ];
     layout = "eu";
+
+    # resolution of UI elements
     dpi = 115;
+
+    # keyboard repeat time
+    autoRepeatInterval = 35;
+    autoRepeatDelay = 320;
 
     # used to let home-manager handle xsession
     desktopManager = {

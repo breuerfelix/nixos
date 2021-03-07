@@ -6,6 +6,12 @@
     autocd = true;
     dotDir = ".config/zsh";
     #defaultKeymap = ""; #vicmd or viins
+
+    sessionVariables = {
+      EDITOR = "nvim";
+      VISUAL = "nvim";
+    };
+
     history = {
       expireDuplicatesFirst = true;
       ignoreDups = true;
@@ -15,7 +21,13 @@
       share = true;
     };
 
+    initExtraBeforeCompInit = ''
+      eval "$(starship init zsh)"
+    '';
     initExtra = ''
+      path+=$HOME/.local/bin
+      source /secrets/environment.bash
+
       bindkey '^e' edit-command-line
       bindkey '^ ' autosuggest-accept
       bindkey '^k' up-line-or-search
@@ -33,7 +45,7 @@
 
       function cd() {
           builtin cd $*
-          ls
+          lsd
       }
 
       function mkd() {
@@ -90,7 +102,6 @@
       gdi = "git diff";
       gdh = "git diff HEAD";
 
-
       # overrides
       cat = "bat";
       ssh = "TERM=screen ssh";
@@ -103,14 +114,19 @@
       pd = "podman";
       pc = "podman-compose";
       sc = "sudo systemctl";
+      py = "python";
       poe = "poetry";
+      pip = "python -m pip";
       fb = "pcmanfm .";
       space = "ncdu";
       ca = "cargo";
       tf = "terraform";
+      diff = "delta";
+      cht = "cht.sh";
 
       # utilities
       psf = "ps -aux | grep";
+      lsf = "ls | grep";
       search = "sudo fd . '/' | grep"; # TODO replace with ripgrep
       shut = "sudo shutdown -h now";
       tssh = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null";
@@ -123,6 +139,18 @@
       nvi = "nvim -u /etc/nixos/shell/backup.vim"; # backup vim TODO remove
     };
 
+    plugins = [
+      {
+        name = "fast-syntax-highlighting";
+        file = "fast-syntax-highlighting.plugin.zsh";
+        src = "${pkgs.zsh-fast-syntax-highlighting}/share/zsh/site-functions";
+      }
+      {
+        name = "zsh-nix-shell";
+        file = "nix-shell.plugin.zsh";
+        src = "${pkgs.zsh-nix-shell}/share/zsh-nix-shell";
+      }
+    ];
     prezto = {
       enable = true;
       caseSensitive = false;
@@ -130,10 +158,6 @@
       editor = {
         dotExpansion = true;
         keymap = "vi";
-      };
-      prompt = {
-        #showReturnVal = true;
-        theme = "smiley";
       };
       python = {
         #virtualenvInitialize = true;
@@ -146,9 +170,7 @@
         "directory"
         "editor"
         "git"
-        "prompt"
         "terminal"
-        "syntax-highlighting"
       ];
     };
   };

@@ -2,13 +2,16 @@
 let
   vars = import ../constants.nix;
   # TODO fetch latest without sha
-  materia-theme = pkgs.fetchFromGitHub {
-    owner = "nana-4";
-    repo = "materia-theme";
-    rev = "e329aaee160c82e85fe91a6467c666c7f9f2a7df";
-    sha256 = "1qmq5ycfpzv0rcp5aav4amlglkqy02477i4bdi7lgpbn0agvms6c";
-    fetchSubmodules = true;
+  materia-theme = builtins.fetchGit {
+    url = "https://github.com/nana-4/materia-theme.git";
   };
+  #materia-theme = pkgs.fetchFromGitHub {
+    #owner = "nana-4";
+    #repo = "materia-theme";
+    #rev = "e329aaee160c82e85fe91a6467c666c7f9f2a7df";
+    #sha256 = "1qmq5ycfpzv0rcp5aav4amlglkqy02477i4bdi7lgpbn0agvms6c";
+    #fetchSubmodules = true;
+  #};
   materia_colors = pkgs.writeTextFile {
     name = "gtk-generated-colors";
     text = with vars.colors; ''

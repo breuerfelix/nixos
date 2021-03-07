@@ -37,7 +37,7 @@ in {
       enable = true;
       defaultCommand = "fd --type f --hidden --follow --exclude .git --exclude .vim --exclude .cache";
       defaultOptions = [
-        "--border"
+        "--border sharp"
         "--inline-info"
       ];
     };

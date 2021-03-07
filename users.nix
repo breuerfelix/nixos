@@ -27,6 +27,13 @@ in {
 
   services = {
     greenclip.enable = true;
+    teamviewer.enable = true;
+    synergy = {
+      server = {
+        enable = false;
+        configFile = "/etc/nixos/desktop/synergy.conf";
+      };
+    };
   };
 
   virtualisation = {

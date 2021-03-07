@@ -34,7 +34,8 @@
         italic = { family = fontname; style = "Semibold Italic"; };
         size = 11;
       };
-      cursor = { style = "Block"; };
+      cursor.style = "Block";
+      #cursor.style = { blinking = "Always"; blink_interval = 500; };
     };
   };
 }
