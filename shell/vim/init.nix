@@ -39,7 +39,7 @@ in {
       #bat ripgrep fd
 
       # extra language servers
-      #rnix-lsp TODO wait until merge of branch
+      rnix-lsp
       terraform-lsp
     ];
     plugins = with unstable.vimPlugins; [

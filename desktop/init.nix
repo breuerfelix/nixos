@@ -118,7 +118,11 @@
         alsaSupport = true;
       };
       config = ./polybar.ini;
-      script = "polybar bar &";
+      script = ''
+        for m in $(polybar --list-monitors | cut -d":" -f1); do
+            MONITOR=$m polybar bar &
+        done
+      '';
     };
   };
 }

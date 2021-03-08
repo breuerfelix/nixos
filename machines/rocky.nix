@@ -1,5 +1,22 @@
 { config, lib, pkgs, modulesPath, ... }: {
-  imports = [ (modulesPath + "/installer/scan/not-detected.nix") ];
+  imports = [
+    (modulesPath + "/installer/scan/not-detected.nix")
+    ../common.nix
+  ];
+
+  services.xserver = {
+    videoDrivers = [ "nvidia" ];
+  };
+
+  # windows handles time in dual boot
+  time.hardwareClockInLocalTime = true;
+
+  networking = {
+    hostName = "rocky";
+    interfaces = {
+      wlp6s0.useDHCP = true;
+    };
+  };
 
   boot = {
     loader.grub = {

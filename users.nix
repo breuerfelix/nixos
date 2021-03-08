@@ -18,7 +18,12 @@ in {
     dconf.enable = true;
     nm-applet.enable = true;
     npm.enable = true;
+    # used to access phone via usb
     adb.enable = true;
+
+    # screen locker
+    # TODO use screenlocker
+    #slock.enable = true;
 
     # picks up shell alias
     fish.enable = false;

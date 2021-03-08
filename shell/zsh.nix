@@ -116,7 +116,7 @@
       sc = "sudo systemctl";
       py = "python";
       poe = "poetry";
-      pip = "python -m pip";
+      pi = "python -m pip";
       fb = "pcmanfm .";
       space = "ncdu";
       ca = "cargo";

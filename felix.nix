@@ -30,6 +30,10 @@ in {
       bind # dns utils
       telnet nmap
       #qmk_firmware # flash keyboard marked as broken
+      betterlockscreen
+      gotop # htop alternative
+      unstable.bottom # htop alternative
+      #grc # colored log output TODO fix this
 
       # compiler
       gnumake
@@ -50,10 +54,8 @@ in {
       # TODO preact-cli global installation
 
       # python tool
-      python3 poetry # python
+      python38Full poetry # python
       #python38Packages.pip
-      #python38Packages.setuptools
-      #python38Packages.wheel
 
       tmate
       ranger
@@ -77,6 +79,7 @@ in {
       podman-compose
 
       # programs
+      nitrogen # wallpaper manager
       firefox # TODO replace with programs.firefox
       ferdi # messenger all-in-one
       insync # google drive sync

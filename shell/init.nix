@@ -11,7 +11,6 @@ in {
     ./git.nix
   ];
 
-  # TODO default.nix demo https://nixos.org/#asciinema-demo-example_3
   # shell integrations are enabled by default
   programs = {
     autojump.enable = true;

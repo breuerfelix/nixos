@@ -1,11 +1,10 @@
 { config, pkgs, ... }: {
-  imports = [
-    ./hardware.nix
-    ./users.nix
-  ];
+  imports = [ ./users.nix ];
 
   # channels -> add them with SUDO !
   # sudo nix-channel --list
+  # sudo nix-channel --add <channel> <name>
+  # sudo nix-channel --update
   # nixos https://nixos.org/channels/nixos-20.09
   # nixos-unstable https://nixos.org/channels/nixos-unstable
 
@@ -28,25 +27,21 @@
       # used for synergy
       allowedTCPPorts = [ 24800 ];
     };
-    hostName = "rocky";
-    useDHCP = false;
-    networkmanager.enable = true;
+
     # nmcli device wifi -> lists available wifi networks
     # nmcli device wifi connect "<wifi name>" password <wifi password>
     # -> connects to a new wifi network
-    interfaces.wlp6s0.useDHCP = true;
+    useDHCP = false;
+    networkmanager.enable = true;
 
     hosts = {
       "173.212.222.231" = [ "con" "contabo" ];
       "185.113.124.212" = [ "ics" ];
+      "185.113.124.20" = [ "the" ];
     };
   };
 
-  time = {
-    timeZone = "Europe/Berlin";
-    # windows handles time in dual boot
-    hardwareClockInLocalTime = true;
-  };
+  time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "en_US.UTF-8";
   console = {
@@ -71,8 +66,8 @@
     # only nixos specific aliases here
     shellAliases = {
       ne = "nvim -c ':cd /etc/nixos' /etc/nixos";
-      nb = "sudo nixos-rebuild switch";
-      nbu = "sudo nixos-rebuild switch --upgrade";
+      nb = "sudo nixos-rebuild switch -I nixos-config=/etc/nixos/machines/$(hostname).nix";
+      nbu = "sudo nixos-rebuild switch -I nixos-config=/etc/nixos/machines/$(hostname).nix --upgrade";
       clean = "sudo nix-collect-garbage";
       nsh = "nix-shell";
     };
@@ -104,11 +99,12 @@
     };
   };
 
-  # wallpaper at ~./background-image will be used
   services.xserver = {
     enable = true;
-    videoDrivers = [ "nvidia" ];
+
     layout = "eu";
+    # replaces capslock with control
+    xkbOptions = "ctrl:nocaps";
 
     # resolution of UI elements
     dpi = 115;
@@ -120,6 +116,8 @@
     # used to let home-manager handle xsession
     desktopManager = {
       xterm.enable = false;
+      # wallpaper at ~./background-image will be used
+      wallpaper.mode = "fill";
       session = [{
         name = "home-manager";
         start = ''
