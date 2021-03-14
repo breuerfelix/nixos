@@ -34,6 +34,7 @@ in {
       gotop # htop alternative
       unstable.bottom # htop alternative
       #grc # colored log output TODO fix this
+      sshfs # mount folders over ssh
 
       # compiler
       gnumake
@@ -79,6 +80,7 @@ in {
       podman-compose
 
       # programs
+      xournalpp # annotate pdf files
       nitrogen # wallpaper manager
       firefox # TODO replace with programs.firefox
       ferdi # messenger all-in-one

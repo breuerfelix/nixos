@@ -68,7 +68,7 @@
       ne = "nvim -c ':cd /etc/nixos' /etc/nixos";
       nb = "sudo nixos-rebuild switch -I nixos-config=/etc/nixos/machines/$(hostname).nix";
       nbu = "sudo nixos-rebuild switch -I nixos-config=/etc/nixos/machines/$(hostname).nix --upgrade";
-      clean = "sudo nix-collect-garbage";
+      clean = "rm -rf ~/.local/share/Trash/files/* && sudo nix-collect-garbage";
       nsh = "nix-shell";
     };
   };

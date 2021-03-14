@@ -69,8 +69,11 @@ set wildmenu
 set wildmode=longest:list,full
 
 "vimwiki
-let g:vimwiki_list = [{'path': '~/vimwiki/',
-  \ 'syntax': 'markdown', 'ext': '.md'}]
+let g:vimwiki_list = [{
+      \'path': '~/vimwiki/',
+      \'syntax': 'markdown',
+      \'ext': '.md'
+      \}]
 "otherwhise vimwiki considers every .md file as vimwiki
 let g:vimwiki_global_ext = 0
 
@@ -89,6 +92,15 @@ let g:user_emmet_leader_key = '<C-e>'
 
 "fzf
 let g:fzf_layout = { 'window': { 'border': 'sharp', 'width': 0.9, 'height': 0.6 } }
+
+let g:vimtex_view_method = 'zathura'
+let g:vimtex_compiler_method = 'generic'
+let g:vimtex_compiler_generic = {
+  \ 'cmd' : 'bash run.sh',
+  \ 'build_dir' : '',
+  \}
+nmap <leader>rl :VimtexCompile<CR>
+let g:which_key_map['r'] = { 'name': 'run' }
 
 "disable all extensions for a minimal setup
 

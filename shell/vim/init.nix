@@ -38,6 +38,8 @@ in {
       # TODO add telescope
       #bat ripgrep fd
 
+      zathura # pdfviewer for latex
+
       # extra language servers
       rnix-lsp
       terraform-lsp

@@ -64,7 +64,7 @@ tnoremap <C-u> <C-\><C-n>:q<CR>
 "run current buffer
 autocmd filetype python nnoremap <CR> :below split <bar> :terminal python %<CR>
 autocmd filetype javascript,typescript nnoremap <CR> :below split <bar> :terminal node %<CR>
-"autocmd filetype go noremap <CR> :below split <bar> :terminal go run .<CR>
+autocmd filetype go noremap <CR> :below split <bar> :terminal go run .<CR>
 
 "true colors
 set termguicolors

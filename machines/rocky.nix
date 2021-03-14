@@ -45,7 +45,7 @@
       };
     };
 
-    kernelModules = [ "kvm-amd" "kvm-intel" ];
+    kernelModules = [ "kvm-amd" ];
     #kernelPackages = pkgs.linuxPackages_5_10;
     extraModulePackages = [ ];
   };

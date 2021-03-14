@@ -93,6 +93,7 @@
       sdel = "sudo rm -rf";
       lst = "ls --tree -I .git";
       lsl = "ls -l";
+      lsa = "ls -a";
       null = "/dev/null";
       tu = "tmux";
       tmux = "tmux -u";
@@ -123,6 +124,7 @@
       tf = "terraform";
       diff = "delta";
       cht = "cht.sh";
+      nr = "npm run";
 
       # utilities
       psf = "ps -aux | grep";
@@ -130,7 +132,11 @@
       search = "sudo fd . '/' | grep"; # TODO replace with ripgrep
       shut = "sudo shutdown -h now";
       tssh = "ssh -o StrictHostKeyChecking=no -o UserKnownHostsFile=/dev/null";
+
+      # clean
       dklocal = "docker run --rm -it -v `PWD`:/usr/workdir --workdir=/usr/workdir";
+      dkclean = "docker container rm $(docker container ls -aq)";
+
       caps = "xdotool key Caps_Lock";
       gclean = "git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done";
       ew = "nvim -c ':cd ~/vimwiki' ~/vimwiki";

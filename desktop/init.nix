@@ -118,11 +118,11 @@
         alsaSupport = true;
       };
       config = ./polybar.ini;
-      script = ''
-        for m in $(polybar --list-monitors | cut -d":" -f1); do
-            MONITOR=$m polybar bar &
-        done
-      '';
+
+      # i3 handles launching polybar
+      # at the time nix launches polybar
+      # there is no information about monitors available
+      script = "exit 0";
     };
   };
 }
