@@ -25,11 +25,35 @@
         { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
       ];
     };
+
+    # TODO fix
+    # execute script on hdmi plugging
+    #udev.extraRules = ''
+      #KERNEL=="card0", \
+      #ACTION=="change", \
+      #SUBSYSTEM=="drm", \
+      #ENV{DISPLAY}=":0", \
+      #ENV{XAUTHORITY}="/home/felix/.Xauthority", \
+      #RUN+="/etc/nixos/desktop/monitor-hotplug.sh"
+    #'';
   };
 
-  environment.etc."sysconfig/lm_sensors".text = ''
-    HWMON_MODULES="coretemp"
-  '';
+  # extra files
+  environment.etc = {
+    "sysconfig/lm_sensors".text = ''
+      HWMON_MODULES="coretemp"
+    '';
+
+    # execute script on hdmi plugging
+    #"udev/rules.d/99-monitor-hotplug.rules".text = ''
+      #KERNEL=="card0", \
+      #ACTION=="change", \
+      #SUBSYSTEM=="drm", \
+      #ENV{DISPLAY}=":0", \
+      #ENV{XAUTHORITY}="/home/felix/.Xauthority", \
+      #RUN+="/etc/nixos/desktop/monitor-hotplug.sh"
+    #'';
+  };
 
   networking = {
     hostName = "smoothie";
