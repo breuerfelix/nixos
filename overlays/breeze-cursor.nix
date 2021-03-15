@@ -5,13 +5,15 @@
         pname = "breeze-cursor";
         version = "0.1.0";
 
+        # TODO add meta data
+        # TODO fetch specific version
         src = builtins.fetchGit {
           url = "https://github.com/KDE/breeze.git";
         };
 
         buildInputs = with pkgs; [
           xorg.xcursorgen
-          pkgs.inkscape
+          inkscape
         ];
 
         dontDropIconThemeCache = true;
