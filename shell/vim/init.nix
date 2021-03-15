@@ -32,13 +32,14 @@ in {
     ];
     extraPackages = with pkgs; [
       # for compilation of treesitter
-      gcc clang curl git
+      libstdcxx5 clang gcc clang curl git
+      unstable.tree-sitter
 
       # for telescope
       # TODO add telescope
       #bat ripgrep fd
 
-      zathura # pdfviewer for latex
+      zathura xdotool # pdfviewer for latex
 
       # extra language servers
       rnix-lsp
@@ -58,7 +59,7 @@ in {
       coc-fzf
       vimtex
 
-      nvim-treesitter
+      (plugin "nvim-treesitter" "nvim-treesitter/nvim-treesitter")
       (plugin "nvim-ts-rainbow" "p00f/nvim-ts-rainbow") # bracket highlighting
 
       # TODO fix context
@@ -68,7 +69,8 @@ in {
       (plugin "lua-popup" "nvim-lua/popup.nvim")
       (plugin "lua-plenary" "nvim-lua/plenary.nvim")
       (plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
-      nvim-web-devicons
+      (plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
+      (plugin "nvim-nonicons" "yamatsum/nvim-nonicons")
 
       vim-airline
       fzfWrapper
