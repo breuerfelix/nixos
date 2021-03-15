@@ -29,7 +29,7 @@ in {
       translate-shell # used for rofi-translate
       bind # dns utils
       telnet nmap
-      #qmk_firmware # flash keyboard marked as broken
+      #qmk_firmware # flash keyboard marked as broken TODO fix
       betterlockscreen
       gotop # htop alternative
       unstable.bottom # htop alternative
@@ -56,7 +56,7 @@ in {
 
       # python tool
       python38Full poetry # python
-      #python38Packages.pip
+      #python38Packages.pip # TODO make pip work
 
       tmate
       ranger

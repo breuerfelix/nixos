@@ -5,13 +5,25 @@
     ../common.nix
   ];
 
-  # touchpad drivers
+  programs.light.enable = true;
   services = {
-    #thinkfan.enable = true;
     thermald.enable = true;
     xserver = {
-      #synaptics.enable = true;
       videoDrivers = [ "intel" ];
+      libinput = {
+        enable = true;
+        naturalScrolling = true;
+        additionalOptions = ''MatchIsTouchpad "on"'';
+      };
+    };
+
+    # makes backlight keys work
+    actkbd = {
+      enable = true;
+      bindings = [
+        { keys = [ 224 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -U 10"; }
+        { keys = [ 225 ]; events = [ "key" ]; command = "/run/current-system/sw/bin/light -A 10"; }
+      ];
     };
   };
 

@@ -22,8 +22,6 @@
       name = "Generated";
       package = pkgs.generated-gtk-theme;
     };
-
-    gtk3.extraConfig.gtk-cursor-theme-name = "breeze";
   };
 
   programs = {

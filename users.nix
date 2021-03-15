@@ -8,7 +8,8 @@ let
 in {
   imports = [
     (import "${home-manager}/nixos")
-    ./desktop/gtk-theme.nix
+    ./overlays/gtk-theme.nix
+    ./overlays/breeze-cursor.nix
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -78,7 +79,8 @@ in {
         "wheel" "networkmanager"
         "audio" "dialout"
         "docker" "libvirtd" "vboxusers"
-        "adbusers"
+        "adbusers" # usb debugging
+        "video" # permission to change backlight
       ];
     };
   };
