@@ -1,0 +1,17 @@
+kind: pipeline
+type: docker
+name: Notify IRC
+
+- name: Send notification
+  image: plugins/irc
+  settings:
+    nick: drone-bot
+    channel: "#lounge-rocks"
+    host: chat.freenode.net
+    port: 6667
+  when:
+    branch:
+    - main
+    event:
+    - push
+    - cron
