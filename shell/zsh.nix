@@ -141,8 +141,6 @@
       gclean = "git fetch -p && for branch in $(git branch -vv | grep ': gone]' | awk '{print $1}'); do git branch -D $branch; done";
       ew = "nvim -c ':cd ~/vimwiki' ~/vimwiki";
       weather = "curl -4 http://wttr.in/Koeln";
-
-      nvi = "nvim -u /etc/nixos/shell/backup.vim"; # backup vim TODO remove
     };
 
     plugins = [

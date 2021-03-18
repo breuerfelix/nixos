@@ -27,7 +27,6 @@ in {
     #slock.enable = true;
 
     # picks up shell alias
-    fish.enable = false;
     zsh.enable = true;
   };
 
@@ -69,7 +68,6 @@ in {
 
   # specific user configurations
   users = {
-    #defaultUserShell = pkgs.fish;
     users.felix = {
       isNormalUser = true;
       home = "/home/felix";

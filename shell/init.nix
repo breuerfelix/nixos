@@ -4,7 +4,6 @@ let
 in {
   imports = [
     ./alacritty.nix
-    ./fish.nix
     ./zsh.nix
     ./vim/init.nix
     ./tmux.nix
