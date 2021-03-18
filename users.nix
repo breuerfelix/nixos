@@ -37,7 +37,7 @@ in {
     synergy = {
       server = {
         enable = false;
-        configFile = "/etc/nixos/desktop/synergy.conf";
+        #configFile = "/etc/nixos/desktop/synergy.conf";
       };
     };
   };

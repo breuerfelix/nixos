@@ -34,7 +34,7 @@
       #SUBSYSTEM=="drm", \
       #ENV{DISPLAY}=":0", \
       #ENV{XAUTHORITY}="/home/felix/.Xauthority", \
-      #RUN+="/etc/nixos/desktop/monitor-hotplug.sh"
+      #RUN+="/etc/nixos/scripts/monitor-hotplug.sh"
     #'';
   };
 
@@ -51,7 +51,7 @@
       #SUBSYSTEM=="drm", \
       #ENV{DISPLAY}=":0", \
       #ENV{XAUTHORITY}="/home/felix/.Xauthority", \
-      #RUN+="/etc/nixos/desktop/monitor-hotplug.sh"
+      #RUN+="/etc/nixos/scripts/monitor-hotplug.sh"
     #'';
   };
 
