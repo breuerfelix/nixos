@@ -1,7 +1,8 @@
 { config, pkgs, lib, ... }:
+let unstable = import <nixos-unstable> {}; in
 let
-  unstable = import <nixos-unstable> {};
-  plugin = name: repo: pkgs.vimUtils.buildVimPluginFrom2Nix {
+  master = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz") {};
+  plugin = name: repo: unstable.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-plugin-${name}";
     version = "git";
     src = builtins.fetchGit {
@@ -30,16 +31,16 @@ in {
         EOF
       ''
     ];
-    extraPackages = with pkgs; [
-      # for compilation of treesitter
-      libstdcxx5 clang gcc clang curl git
-      unstable.tree-sitter
+    extraPackages = with unstable; [
+      # TODO use unstable tree-sitter once version hits 19
+      master.tree-sitter
 
       # for telescope
       # TODO add telescope
       #bat ripgrep fd
 
-      zathura xdotool # pdfviewer for latex
+      # pdfviewer for latex
+      zathura xdotool
 
       # extra language servers
       rnix-lsp
@@ -59,6 +60,7 @@ in {
       coc-fzf
       vimtex
 
+      #nvim-treesitter
       (plugin "nvim-treesitter" "nvim-treesitter/nvim-treesitter")
       (plugin "nvim-ts-rainbow" "p00f/nvim-ts-rainbow") # bracket highlighting
 
@@ -69,8 +71,9 @@ in {
       (plugin "lua-popup" "nvim-lua/popup.nvim")
       (plugin "lua-plenary" "nvim-lua/plenary.nvim")
       (plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
-      (plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
-      (plugin "nvim-nonicons" "yamatsum/nvim-nonicons")
+      # TODO get these going
+      #(plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
+      #(plugin "nvim-nonicons" "yamatsum/nvim-nonicons")
 
       vim-airline
       fzfWrapper
@@ -85,6 +88,8 @@ in {
       nerdcommenter
 
       emmet-vim
+      (plugin "tagalong" "AndrewRadev/tagalong.vim")
+      (plugin "codi" "metakirby5/codi.vim")
 
       # TODO lazyload
       vimwiki
@@ -98,6 +103,7 @@ in {
       nerdtree
       #nvim-tree-lua
 
+      # TODO maybe replace with nvim web devicons
       vim-devicons
     ];
   };

@@ -99,7 +99,9 @@ let g:vimtex_compiler_generic = {
   \ 'cmd' : 'bash run.sh',
   \ 'build_dir' : '',
   \}
+
 nmap <leader>rl :VimtexCompile<CR>
+nmap <leader>rc :Codi!!<CR>
 let g:which_key_map['r'] = { 'name': 'run' }
 
 "disable all extensions for a minimal setup

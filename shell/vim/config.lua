@@ -9,4 +9,4 @@ require'nvim-treesitter.configs'.setup {
   rainbow = { enable = true, },
 }
 
-require'nvim-web-devicons'.setup{default = true;}
+--require'nvim-web-devicons'.setup{default = true;}

@@ -38,7 +38,10 @@ in {
 
       # compiler
       gnumake
-      gcc
+
+      # Stdenv links libstdc++ to lib path
+      gcc gccStdenv
+      #clang clangStdenv # TODO some things fail with clang
 
       # terminal
       fd ripgrep
@@ -55,7 +58,7 @@ in {
       # TODO preact-cli global installation
 
       # python tool
-      python38Full poetry # python
+      unstable.python38Full unstable.poetry # python
       #python38Packages.pip # TODO make pip work
 
       tmate
@@ -95,6 +98,8 @@ in {
       teamviewer
       #quicksynergy # share mouse and keyboard events
       synergy
+      screenkey
+      signal-desktop
 
       #obsidian # gui for knowledge base
       #yuzu-ea # nintendo switch emulator
