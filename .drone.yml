@@ -2,6 +2,7 @@ kind: pipeline
 type: docker
 name: Notify IRC
 
+steps:
 - name: Send notification
   image: plugins/irc
   settings:

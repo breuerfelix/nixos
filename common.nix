@@ -8,7 +8,6 @@
   # nixos https://nixos.org/channels/nixos-20.09
   # nixos-unstable https://nixos.org/channels/nixos-unstable
 
-
   system.stateVersion = "20.09";
   nixpkgs.config.allowUnfree = true;
 
