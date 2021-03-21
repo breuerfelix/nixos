@@ -35,6 +35,7 @@ in {
       unstable.bottom # htop alternative
       #grc # colored log output TODO fix this
       sshfs # mount folders over ssh
+      paprefs # allows multiple output sources
 
       # compiler
       gnumake
@@ -100,6 +101,7 @@ in {
       synergy
       screenkey
       signal-desktop
+      #lutris # gaming on linux
 
       #obsidian # gui for knowledge base
       #yuzu-ea # nintendo switch emulator

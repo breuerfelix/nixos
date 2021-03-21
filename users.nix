@@ -22,6 +22,9 @@ in {
     # used to access phone via usb
     adb.enable = true;
 
+    # gaming
+    steam.enable = false;
+
     # screen locker
     # TODO use screenlocker
     #slock.enable = true;
@@ -36,6 +39,7 @@ in {
     synergy = {
       server = {
         enable = false;
+        # TODO create this file
         #configFile = "/etc/nixos/desktop/synergy.conf";
       };
     };

@@ -28,6 +28,9 @@
       path+=$HOME/.local/bin
       source /secrets/environment.bash
 
+      # make libgc++ available in the terminal
+      export LD_LIBRARY_PATH=${lib.makeLibraryPath [pkgs.stdenv.cc.cc]}
+
       bindkey '^e' edit-command-line
       bindkey '^ ' autosuggest-accept
       bindkey '^k' up-line-or-search
