@@ -80,7 +80,8 @@
     flameshot.enable = true;
     picom = {
       enable = true;
-      vSync = true;
+      # turn off vsync because of stuttering in obs
+      vSync = false;
       backend = "glx";
       experimentalBackends = true;
       #shadow = true;
