@@ -8,6 +8,8 @@ platform:
 
 steps:
 - name: Build Tower
+  environment:
+    NIX_PATH: nixpkgs=channel:nixos-20.09
   commands:
   - nix-shell -p '(nixos{}).nixos-rebuild' --run "nixos-rebuild build -I nixos-config=./machine/rocky.nix"
     #- name: Build Laptop
