@@ -7,14 +7,16 @@ platform:
   arch: amd64
 
 steps:
-- name: Build Tower
+- name: Build Rocky
   environment:
     NIX_PATH: nixpkgs=channel:nixos-20.09:nixos-unstable=channel:nixos-unstable
   commands:
   - nix-shell -p '(nixos{}).nixos-rebuild' --run "nixos-rebuild build -I nixos-config=./machines/rocky.nix"
-    #- name: Build Laptop
-    #commands:
-    #- nix-build machines/smoothie.nix
+- name: Build Smoothie
+  environment:
+    NIX_PATH: nixpkgs=channel:nixos-20.09:nixos-unstable=channel:nixos-unstable
+  commands:
+  - nix-shell -p '(nixos{}).nixos-rebuild' --run "nixos-rebuild build -I nixos-config=./machines/smoothie.nix"
 
 ---
 
