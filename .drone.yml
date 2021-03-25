@@ -9,7 +9,7 @@ platform:
 steps:
 - name: Build Tower
   commands:
-  - nix-build -I '<nixpkgs>' machines/rocky.nix
+  - nix-build --config machines/rocky.nix
     #- name: Build Laptop
     #commands:
     #- nix-build machines/smoothie.nix
@@ -24,6 +24,7 @@ steps:
 - name: Send notification
   image: plugins/irc
   settings:
+    template: "[{{build.status}}]: {{build.message}} | #{{truncate build.commit 8}} {{build.event}} on {{repo.owner}}/{{repo.name}}/{{build.branch}} by {{build.author}} - {{build.link}}"
     nick: drone-bot
     channel: "#lounge-rocks"
     host: chat.freenode.net
