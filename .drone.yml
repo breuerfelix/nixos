@@ -1,4 +1,22 @@
 kind: pipeline
+type: exec
+name: Build all Hosts
+
+platform:
+  os: linux
+  arch: amd64
+
+steps:
+- name: Build Tower
+  commands:
+  - nixos-rebuild build -I nixos-config=machines/rocky.nix
+- name: Build Laptop
+  commands:
+  - nixos-rebuild build -I nixos-config=machines/smoothie.nix
+
+---
+
+kind: pipeline
 type: docker
 name: Notify IRC
 

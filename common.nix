@@ -20,6 +20,11 @@
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
+
+    # custom lounge rocks cache
+    binaryCachePublicKeys = [ "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" ];
+    binaryCaches = [ "https://cache.lounge.rocks" ];
+    trustedBinaryCaches =  [ "https://cache.lounge.rocks" ];
   };
 
   networking = {
