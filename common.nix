@@ -1,4 +1,4 @@
-{ config, pkgs, ... }: {
+{ config, pkgs, lib, ... }: {
   imports = [ ./users.nix ];
 
   # channels -> add them with SUDO !
@@ -22,8 +22,10 @@
     };
 
     # custom lounge rocks cache
-    # default cache always gets added
-    binaryCaches = [ "https://cache.lounge.rocks" ];
+    binaryCaches = lib.mkForce [
+      "https://cache.lounge.rocks"
+      "https://cache.nixos.org"
+    ];
     # only use trustworthy caches when set to false
     requireSignedBinaryCaches = false;
   };
