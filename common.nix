@@ -14,7 +14,7 @@
   nix = {
     allowedUsers = [ "root" ];
     # saves disk space
-    #autoOptimiseStore = true;
+    autoOptimiseStore = true;
     gc = {
       automatic = true;
       dates = "weekly";
@@ -22,9 +22,10 @@
     };
 
     # custom lounge rocks cache
-    #binaryCachePublicKeys = [ "cache.lounge.rocks:uXa8UuAEQoKFtU8Om/hq6d7U+HgcrduTVr8Cfl6JuaY=" ];
-    #binaryCaches = [ "https://cache.lounge.rocks" ];
-    #trustedBinaryCaches =  [ "https://cache.lounge.rocks" ];
+    # default cache always gets added
+    binaryCaches = [ "https://cache.lounge.rocks" ];
+    # only use trustworthy caches when set to false
+    requireSignedBinaryCaches = false;
   };
 
   networking = {
