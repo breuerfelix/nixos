@@ -17,25 +17,3 @@ steps:
     NIX_PATH: nixpkgs=channel:nixos-20.09:nixos-unstable=channel:nixos-unstable
   commands:
   - nix-shell -p '(nixos{}).nixos-rebuild' --run "nixos-rebuild build -I nixos-config=./machines/smoothie.nix"
-
----
-
-kind: pipeline
-type: docker
-name: Notify IRC
-
-steps:
-- name: Send notification
-  image: plugins/irc
-  settings:
-    template: "[{{build.status}}]: {{build.message}} | #{{truncate build.commit 8}} {{build.event}} on {{repo.owner}}/{{repo.name}}/{{build.branch}} by {{build.author}} - {{build.link}}"
-    nick: drone-bot
-    channel: "#lounge-rocks"
-    host: chat.freenode.net
-    port: 6667
-  when:
-    branch:
-    - main
-    event:
-    - push
-    - cron
