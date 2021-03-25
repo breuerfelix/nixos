@@ -14,7 +14,7 @@
   nix = {
     allowedUsers = [ "root" ];
     # saves disk space
-    autoOptimiseStore = true;
+    #autoOptimiseStore = true;
     gc = {
       automatic = true;
       dates = "weekly";
