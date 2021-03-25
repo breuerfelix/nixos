@@ -3,6 +3,8 @@ let
   vars = import ../constants.nix;
   materia-theme = builtins.fetchGit {
     url = "https://github.com/nana-4/materia-theme.git";
+    # TODO built on latest master
+    ref = "v20200916";
   };
   materia_colors = pkgs.writeTextFile {
     name = "gtk-generated-colors";
@@ -51,7 +53,7 @@ in {
       generated-gtk-theme = self.stdenv.mkDerivation rec {
         name = "generated-gtk-theme";
         src = materia-theme;
-        buildInputs = with self; [ sassc bc which inkscape optipng meson ];
+        buildInputs = with self; [ sassc bc which inkscape optipng ];
         installPhase = ''
           HOME=/build
           chmod 777 -R .
