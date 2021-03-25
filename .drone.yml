@@ -9,7 +9,7 @@ platform:
 trigger:
   event:
   - push
-    #- cron
+  - cron
 
 steps:
 - name: Build Rocky
