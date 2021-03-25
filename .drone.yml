@@ -9,10 +9,10 @@ platform:
 steps:
 - name: Build Tower
   commands:
-  - nix-build machines/rocky.nix
-- name: Build Laptop
-  commands:
-  - nix-build machines/smoothie.nix
+  - nix-build -I '<nixpkgs>' machines/rocky.nix
+    #- name: Build Laptop
+    #commands:
+    #- nix-build machines/smoothie.nix
 
 ---
 
