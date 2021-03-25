@@ -6,6 +6,11 @@ platform:
   os: linux
   arch: amd64
 
+trigger:
+  event:
+  - push
+  - cron
+
 steps:
 - name: Build Rocky
   environment:
