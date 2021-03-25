@@ -9,7 +9,7 @@ platform:
 steps:
 - name: Build Tower
   commands:
-  - nix-build --config machines/rocky.nix
+  - nix-shell -p '(nixos{}).nixos-rebuild' --run "nixos-rebuild build -I nixos-config=./machine/rocky.nix"
     #- name: Build Laptop
     #commands:
     #- nix-build machines/smoothie.nix
