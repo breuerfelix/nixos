@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+self: super:
 let
   vars = import ../constants.nix;
   materia-theme = builtins.fetchGit {
@@ -6,7 +6,7 @@ let
     # TODO built on latest master
     ref = "v20200916";
   };
-  materia_colors = pkgs.writeTextFile {
+  materia_colors = self.pkgs.writeTextFile {
     name = "gtk-generated-colors";
     text = with vars.colors; ''
       BTN_BG=${base02}
@@ -46,25 +46,19 @@ let
     '';
   };
 in {
-  # you can't run this in the home-manager
-  # with home-manager.useGlobalPkgs = true;
-  nixpkgs.overlays = [
-    (self: super: {
-      generated-gtk-theme = self.stdenv.mkDerivation rec {
-        name = "generated-gtk-theme";
-        src = materia-theme;
-        buildInputs = with self; [ sassc bc which inkscape optipng ];
-        installPhase = ''
-          HOME=/build
-          chmod 777 -R .
-          patchShebangs .
-          mkdir -p $out/share/themes
-          substituteInPlace change_color.sh --replace "\$HOME/.themes" "$out/share/themes"
-          echo "Changing colours:"
-          ./change_color.sh -o Generated ${materia_colors}
-          chmod 555 -R .
-        '';
-      };
-    })
-  ];
+  generated-gtk-theme = self.stdenv.mkDerivation rec {
+    name = "generated-gtk-theme";
+    src = materia-theme;
+    buildInputs = with self.pkgs; [ sassc bc which inkscape optipng ];
+    installPhase = ''
+      HOME=/build
+      chmod 777 -R .
+      patchShebangs .
+      mkdir -p $out/share/themes
+      substituteInPlace change_color.sh --replace "\$HOME/.themes" "$out/share/themes"
+      echo "Changing colours:"
+      ./change_color.sh -o Generated ${materia_colors}
+      chmod 555 -R .
+    '';
+  };
 }

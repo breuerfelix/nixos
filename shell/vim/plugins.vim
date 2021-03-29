@@ -14,7 +14,7 @@ map <leader>b :NERDTreeToggle<CR>
 nmap <leader>s :Rg<CR>
 nmap <leader>ln :noh<CR>
 nmap <leader>ls :s/"/'/g<bar>:noh<CR>
-nmap <leader>lf :ALEFix<CR>
+nmap <leader>lc :%s/\t/  /g<CR>
 nmap <leader>lg :GrammarousCheck<CR>
 nmap <leader>lr :GrammarousReset<CR>
 nmap <leader>lt :OpenTodo<CR>

@@ -1,5 +1,8 @@
 { config, pkgs, lib, ... }: {
-  imports = [ ./users.nix ];
+  imports = [
+    ./users.nix
+    ./overlays
+  ];
 
   # channels -> add them with SUDO !
   # sudo nix-channel --list
@@ -23,8 +26,8 @@
 
     # custom lounge rocks cache
     binaryCaches = lib.mkForce [
-      "https://cache.lounge.rocks"
       "https://cache.nixos.org"
+      "https://cache.lounge.rocks"
     ];
     # only use trustworthy caches when set to false
     requireSignedBinaryCaches = false;

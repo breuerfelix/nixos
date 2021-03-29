@@ -6,6 +6,8 @@
 let mapleader = ' '
 inoremap jk <Esc>
 vnoremap u <Esc>
+imap <C-j> <C-n>
+imap <C-k> <C-p>
 
 "trailing
 noremap <C-c> <S-j>
@@ -17,12 +19,12 @@ noremap <S-k> 3kzz
 "nmap <C-f> <C-u>
 
 "buffer
-map <C-n> :bnext<CR>
-map <C-p> :bprevious<CR>
+nmap <C-n> :bnext<CR>
+nmap <C-p> :bprevious<CR>
 "map <C-t> :tabnew<CR>
 
 "finder
-map ; :Files<CR>
+nmap ; :Files<CR>
 
 "inserts blank line below
 noremap <C-[> :set paste<CR>o<Esc>:set nopaste<CR>

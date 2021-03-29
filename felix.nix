@@ -5,8 +5,8 @@ let
 in {
   imports = [
     ./modules/base16.nix
-    ./shell/init.nix
-    ./desktop/init.nix
+    ./shell
+    ./desktop
   ];
 
   programs.home-manager.enable = true;
@@ -36,6 +36,8 @@ in {
       #grc # colored log output TODO fix this
       sshfs # mount folders over ssh
       paprefs # allows multiple output sources
+
+      unstable.esptool
 
       # compiler
       gnumake

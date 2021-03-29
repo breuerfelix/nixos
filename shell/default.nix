@@ -29,6 +29,9 @@ in {
     htop = {
       enable = true;
       treeView = true;
+      showCpuFrequency = true;
+      showCpuUsage = true;
+      showProgramPath = false;
     };
 
     fzf = {

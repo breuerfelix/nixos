@@ -1,6 +1,5 @@
 { config, pkgs, lib, ... }:
 let
-  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
   home-manager = builtins.fetchGit {
     url = "https://github.com/rycee/home-manager.git";
     ref = "release-20.09";
@@ -8,8 +7,6 @@ let
 in {
   imports = [
     (import "${home-manager}/nixos")
-    ./overlays/gtk-theme.nix
-    ./overlays/breeze-cursor.nix
   ];
 
   security.sudo.wheelNeedsPassword = false;
@@ -46,7 +43,6 @@ in {
   };
 
   virtualisation = {
-    libvirtd.enable = true;
     podman.enable = true;
     docker = {
       enable = true;
@@ -59,8 +55,10 @@ in {
       };
     };
 
+    # virtualbox is disabled by default
+    libvirtd.enable = false;
     virtualbox.host = {
-      enable = true;
+      enable = false;
       enableExtensionPack = true;
     };
   };
@@ -89,17 +87,4 @@ in {
 
   home-manager.users.felix = import ./felix.nix;
   nix.allowedUsers = [ "felix" ];
-
-  # use neovim nightly
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/neovim-nightly-overlay/archive/master.tar.gz;
-    }))
-  ];
-
-  # unstable package overrides
-  nixpkgs.config.packageOverrides = pkgs: {
-    fzf = unstable.fzf;
-    alacritty = unstable.alacritty;
-  };
 }
