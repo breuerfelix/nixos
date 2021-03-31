@@ -126,8 +126,12 @@
       ca = "cargo";
       tf = "terraform";
       diff = "delta";
-      cht = "cht.sh";
       nr = "npm run";
+
+      # terminal cheat sheet
+      cht = "cht.sh";
+      # lists node_modules folder and their size
+      npkill = "npx npkill";
 
       # utilities
       psf = "ps -aux | grep";

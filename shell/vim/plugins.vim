@@ -105,7 +105,6 @@ nmap <leader>rc :Codi!!<CR>
 let g:which_key_map['r'] = { 'name': 'run' }
 
 "disable all extensions for a minimal setup
-
 let g:airline_extensions = ['tabline']
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
