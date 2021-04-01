@@ -23,11 +23,12 @@ in {
     extraConfig = builtins.concatStringsSep "\n" [
       (lib.strings.fileContents ./base.vim)
       (lib.strings.fileContents ./plugins.vim)
-      (lib.strings.fileContents ./coc.vim)
-      # include ./lsp.lua and ./lsp.vim for neovim nightly lsp
+      (lib.strings.fileContents ./lsp.vim)
+      #(lib.strings.fileContents ./coc.vim)
       ''
         lua << EOF
         ${lib.strings.fileContents ./config.lua}
+        ${lib.strings.fileContents ./lsp.lua}
         EOF
       ''
     ];
@@ -43,24 +44,28 @@ in {
       zathura xdotool
 
       # extra language servers
-      rnix-lsp
+      #rnix-lsp TODO fix slow closing time of neovim
       terraform-lsp
+      nodePackages.typescript nodePackages.typescript-language-server
+      gopls
+      texlab
     ];
     plugins = with unstable.vimPlugins; [
       vim-which-key
 
       # lsp
-      #nvim-lspconfig
+      (plugin "lsp" "neovim/nvim-lspconfig")
       #vim-vsnip
-      #nvim-compe
-      #(plugin "nvim-autopairs" "windwp/nvim-autopairs")
+      (plugin "compe" "hrsh7th/nvim-compe")
+      (plugin "delimitMate" "Raimondi/delimitMate")
+      # get vimtex going
 
       # coc
-      coc-nvim
-      coc-fzf
+      #coc-nvim
+      #coc-fzf
       vimtex
 
-      #nvim-treesitter
+      # syntax highlighting
       (plugin "nvim-treesitter" "nvim-treesitter/nvim-treesitter")
       (plugin "nvim-ts-rainbow" "p00f/nvim-ts-rainbow") # bracket highlighting
 
@@ -68,9 +73,9 @@ in {
       #nvim-treesitter-context
 
       # telescope
-      (plugin "lua-popup" "nvim-lua/popup.nvim")
-      (plugin "lua-plenary" "nvim-lua/plenary.nvim")
-      (plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
+      #(plugin "lua-popup" "nvim-lua/popup.nvim")
+      #(plugin "lua-plenary" "nvim-lua/plenary.nvim")
+      #(plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
       # TODO get these going
       #(plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
       #(plugin "nvim-nonicons" "yamatsum/nvim-nonicons")

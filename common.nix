@@ -24,13 +24,13 @@
       options = "--delete-older-than 7d";
     };
 
-    # custom lounge rocks cache
-    binaryCaches = lib.mkForce [
-      "https://cache.nixos.org"
-      "https://cache.lounge.rocks"
-    ];
-    # only use trustworthy caches when set to false
-    requireSignedBinaryCaches = false;
+    ## custom lounge rocks cache
+    #binaryCaches = lib.mkForce [
+      #"https://cache.nixos.org"
+      #"https://cache.lounge.rocks"
+    #];
+    ## only use trustworthy caches when set to false
+    #requireSignedBinaryCaches = false;
   };
 
   networking = {

@@ -100,9 +100,9 @@ let g:vimtex_compiler_generic = {
   \ 'build_dir' : '',
   \}
 
-nmap <leader>rl :VimtexCompile<CR>
-nmap <leader>rc :Codi!!<CR>
-let g:which_key_map['r'] = { 'name': 'run' }
+nmap <leader>el :VimtexCompile<CR>
+nmap <leader>ec :Codi!!<CR>
+let g:which_key_map['e'] = { 'name': 'exec' }
 
 "disable all extensions for a minimal setup
 let g:airline_extensions = ['tabline']
