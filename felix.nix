@@ -1,5 +1,6 @@
 { config, pkgs, lib, ... }:
 let
+  master = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz") {};
   vars = import ./constants.nix;
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
@@ -44,7 +45,9 @@ in {
 
       # Stdenv links libstdc++ to lib path
       gcc gccStdenv
-      #clang clangStdenv # TODO some things fail with clang
+
+      # c#
+      dotnet-sdk_3
 
       # terminal
       fd ripgrep
@@ -94,12 +97,15 @@ in {
       blender
       veracrypt # cross-platform drive encryption
       vlc # media player
-      unityhub
+
+      unstable.unityhub
+      vscode # needed to generate project files
+
       zotero # latex bib manager
       android-studio
       zoom-us
       teamviewer
-      #quicksynergy # share mouse and keyboard events
+      #quicksynergy # share mouse and keyboard events TODO configure
       synergy
       screenkey
       signal-desktop
@@ -107,7 +113,7 @@ in {
 
       #obsidian # gui for knowledge base
       #yuzu-ea # nintendo switch emulator
-      # TODO asesprite calibre lossless-cut noisetorch screenkey vlc wireshark
+      # TODO asesprite calibre lossless-cut noisetorch wireshark
     ];
   };
 

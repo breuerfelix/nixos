@@ -29,6 +29,18 @@ in {
         lua << EOF
         ${lib.strings.fileContents ./config.lua}
         ${lib.strings.fileContents ./lsp.lua}
+
+        -- TODO fix this
+        -- setup omnisharp lsp
+        -- nvim_lsp = require('lspconfig')
+        local pid = vim.fn.getpid()
+        local omnisharp_bin = "${master.omnisharp-roslyn}/bin/omnisharp"
+        nvim_lsp.omnisharp.setup{
+            cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+            filetypes = { "cs", "vb" };
+            init_options = {};
+            root_dir = nvim_lsp.util.root_pattern("*.csproj", "*.sln");
+        }
         EOF
       ''
     ];
@@ -49,6 +61,8 @@ in {
       nodePackages.typescript nodePackages.typescript-language-server
       gopls
       texlab
+      nodePackages.pyright
+      dotnet-sdk_3 # TODO fix
     ];
     plugins = with unstable.vimPlugins; [
       vim-which-key

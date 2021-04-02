@@ -65,6 +65,7 @@ local servers = {
   --"rnix", FIX it -> neovim takes ages to close
   "terraformls",
   "texlab",
+  "pyright",
 }
 for _, lsp in ipairs(servers) do
   nvim_lsp[lsp].setup { on_attach = on_attach }
@@ -85,6 +86,7 @@ require'compe'.setup {
   max_abbr_width = 100;
   max_kind_width = 100;
   max_menu_width = 100;
+
   documentation = true;
 
   source = {
