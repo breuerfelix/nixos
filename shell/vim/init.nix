@@ -30,13 +30,12 @@ in {
         ${lib.strings.fileContents ./config.lua}
         ${lib.strings.fileContents ./lsp.lua}
 
-        -- TODO fix this
         -- setup omnisharp lsp
         -- nvim_lsp = require('lspconfig')
         local pid = vim.fn.getpid()
         local omnisharp_bin = "${master.omnisharp-roslyn}/bin/omnisharp"
         nvim_lsp.omnisharp.setup{
-            cmd = { omnisharp_bin, "--languageserver" , "--hostPID", tostring(pid) };
+            cmd = { omnisharp_bin, "--languageserver" };
             filetypes = { "cs", "vb" };
             init_options = {};
             root_dir = nvim_lsp.util.root_pattern("*.csproj", "*.sln");
@@ -62,7 +61,6 @@ in {
       gopls
       texlab
       nodePackages.pyright
-      dotnet-sdk_3 # TODO fix
     ];
     plugins = with unstable.vimPlugins; [
       vim-which-key
@@ -93,6 +91,8 @@ in {
       # TODO get these going
       #(plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
       #(plugin "nvim-nonicons" "yamatsum/nvim-nonicons")
+      # highlights current variable with underline
+      (plugin "nvim-cursorline" "yamatsum/nvim-cursorline")
 
       vim-airline
       fzfWrapper

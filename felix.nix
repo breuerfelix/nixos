@@ -33,6 +33,7 @@ in {
       #qmk_firmware # flash keyboard marked as broken TODO fix
       betterlockscreen
       gotop # htop alternative
+      nvtop # gpu monitor
       unstable.bottom # htop alternative
       #grc # colored log output TODO fix this
       sshfs # mount folders over ssh
@@ -47,7 +48,7 @@ in {
       gcc gccStdenv
 
       # c#
-      dotnet-sdk_3
+      dotnet-sdk
 
       # terminal
       fd ripgrep
