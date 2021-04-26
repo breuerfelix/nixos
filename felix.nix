@@ -38,6 +38,7 @@ in {
       #grc # colored log output TODO fix this
       sshfs # mount folders over ssh
       paprefs # allows multiple output sources
+      unstable.zenmonitor
 
       unstable.esptool
 
@@ -78,6 +79,7 @@ in {
       termdown # terminal countdown
       hyperfine # performance test tool
       tectonic # latex compiler
+      plantuml # generates plantuml diagrams
       python38Packages.pygments # latex syntac highlighting
 
       # k8s

@@ -2,13 +2,17 @@
 let unstable = import <nixos-unstable> {}; in
 let
   master = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz") {};
-  plugin = name: repo: unstable.vimUtils.buildVimPluginFrom2Nix {
+  # installs a vim plugin from git with a given tag / branch
+  pluginGit = ref: name: repo: unstable.vimUtils.buildVimPluginFrom2Nix {
     pname = "vim-plugin-${name}";
-    version = "git";
+    version = ref;
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
+      ref = ref;
     };
   };
+  # always installs latest version
+  plugin = pluginGit "HEAD";
 in {
   programs.neovim = {
     enable = true;
@@ -86,13 +90,18 @@ in {
 
       # telescope
       #(plugin "lua-popup" "nvim-lua/popup.nvim")
-      #(plugin "lua-plenary" "nvim-lua/plenary.nvim")
+      (plugin "lua-plenary" "nvim-lua/plenary.nvim")
       #(plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
       # TODO get these going
       #(plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
       #(plugin "nvim-nonicons" "yamatsum/nvim-nonicons")
       # highlights current variable with underline
       (plugin "nvim-cursorline" "yamatsum/nvim-cursorline")
+
+      (plugin "gitsigns" "lewis6991/gitsigns.nvim")
+
+      # indentline
+      (pluginGit "lua" "indent-blankline" "lukas-reineke/indent-blankline.nvim")
 
       vim-airline
       fzfWrapper

@@ -1,4 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{ config, lib, pkgs, modulesPath, ... }:
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     ../common.nix
@@ -14,6 +17,7 @@
   networking = {
     hostName = "rocky";
     interfaces = {
+      eno1.useDHCP = true;
       wlp6s0.useDHCP = true;
     };
   };
@@ -46,8 +50,9 @@
     };
 
     kernelModules = [ "kvm-amd" ];
-    #kernelPackages = pkgs.linuxPackages_5_10;
-    extraModulePackages = [ ];
+    kernelPackages = unstable.pkgs.linuxPackages_5_11;
+    extraModulePackages = with unstable.pkgs.linuxPackages_5_11; [ zenpower ];
+    #extraModulePackages = [ ];
   };
 
   fileSystems = {

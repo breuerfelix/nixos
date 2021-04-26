@@ -94,6 +94,7 @@ set conceallevel=0
 "toggle invisible characters
 set list
 set listchars=tab:→\ ,eol:¬,trail:~,extends:❯,precedes:❮,space:␣
+"set listchars=eol:¬,trail:~,extends:❯,precedes:❮
 set showbreak=↪
 
 "default for vim sleuth

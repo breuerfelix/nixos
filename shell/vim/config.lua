@@ -1,4 +1,5 @@
 require'colorizer'.setup()
+require('gitsigns').setup()
 
 -- treesitter
 require'nvim-treesitter.configs'.setup {

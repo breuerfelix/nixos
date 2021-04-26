@@ -26,6 +26,9 @@ let g:spacevim_todo_labels = [
 \  'TODO',
 \]
 
+let g:indentLine_char = '│'
+highlight IndentBlanklineChar guifg=grey25 gui=nocombine
+
 "improve writing
 function! s:goyo_enter()
   set nolist

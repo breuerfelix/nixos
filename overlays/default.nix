@@ -15,5 +15,6 @@ in {
     }))
     (import ./breeze-cursor.nix)
     (import ./gtk-theme.nix)
+    #(import ./hyperion.nix)
   ];
 }
