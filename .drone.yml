@@ -22,10 +22,3 @@ steps:
     NIX_PATH: nixpkgs=channel:nixos-20.09:nixos-unstable=channel:nixos-unstable
   commands:
   - nix-shell -p '(nixos{}).nixos-rebuild' --run "nixos-rebuild build -I nixos-config=./machines/smoothie.nix"
-- name: Notify
-  commands:
-  - nix run 'github:pinpox/http2irc#announce-drone'
-  environment:
-    NIX_PATH: nixpkgs=channel:nixos-unstable
-    TOKEN:
-      from_secret: irc_token
