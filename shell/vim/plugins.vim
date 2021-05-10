@@ -26,7 +26,9 @@ let g:spacevim_todo_labels = [
 \  'TODO',
 \]
 
+"let g:indentLine_char = '|'
 let g:indentLine_char = '│'
+
 highlight IndentBlanklineChar guifg=grey25 gui=nocombine
 
 "improve writing
@@ -43,6 +45,9 @@ endfunction
 noremap <silent> <leader>g :Goyo<CR>
 autocmd! User GoyoEnter nested call <SID>goyo_enter()
 autocmd! User GoyoLeave nested call <SID>goyo_leave()
+
+"inline hints for rust
+autocmd BufEnter,BufWinEnter,TabEnter *.rs :lua require'lsp_extensions'.inlay_hints{}
 
 " fuzzy finder for wilder menu
 "call wilder#set_option('pipeline', [
@@ -105,9 +110,9 @@ let g:vimtex_compiler_generic = {
 
 nmap <leader>el :VimtexCompile<CR>
 nmap <leader>ec :Codi!!<CR>
+nmap <leader>eh <Plug>RestNvim
 let g:which_key_map['e'] = { 'name': 'exec' }
 
 "disable all extensions for a minimal setup
-let g:airline_extensions = ['tabline']
-let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
+let g:airline_extensions = []
+let g:airline_powerline_fonts = 0

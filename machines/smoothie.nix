@@ -1,4 +1,7 @@
-{ config, lib, pkgs, modulesPath, ... }: {
+{ config, lib, pkgs, modulesPath, ... }:
+let
+  unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
+in {
   imports = [
     (modulesPath + "/installer/scan/not-detected.nix")
     "${builtins.fetchGit { url = "https://github.com/NixOS/nixos-hardware.git"; }}/lenovo/thinkpad/t490"
@@ -89,7 +92,7 @@
     };
 
     kernelModules = [ "kvm-intel" ];
-    #kernelPackages = pkgs.linuxPackages_5_10;
+    kernelPackages = unstable.pkgs.linuxPackages_5_11;
     extraModulePackages = [ ];
     # enables thinkfan control
     extraModprobeConfig = ''

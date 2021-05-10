@@ -28,8 +28,9 @@
         }
       ];
 
-      font = let fontname = "Sauce Code Pro Nerd Font"; in {
-        normal = { family = fontname; style = "Semibold"; };
+      #font = let fontname = "Sauce Code Pro Nerd Font"; in {
+      font = let fontname = "Recursive Mono Linear Static"; in {
+        normal = { family = fontname; style = "Medium"; };
         bold = { family = fontname; style = "Bold"; };
         italic = { family = fontname; style = "Semibold Italic"; };
         size = 11;

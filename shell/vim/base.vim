@@ -21,6 +21,7 @@ noremap <S-k> 3kzz
 "buffer
 nmap <C-n> :bnext<CR>
 nmap <C-p> :bprevious<CR>
+nmap <C-y> :bdelete<CR>
 "map <C-t> :tabnew<CR>
 
 "finder
@@ -159,4 +160,3 @@ highlight Comment guifg=grey
 "highlight only one character when line too long
 highlight ColorColumn ctermbg=grey guibg=grey25
 call matchadd('ColorColumn', '\%88v', 100)
-

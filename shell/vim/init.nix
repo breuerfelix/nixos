@@ -3,8 +3,8 @@ let unstable = import <nixos-unstable> {}; in
 let
   master = import (fetchTarball "https://github.com/NixOS/nixpkgs/archive/master.tar.gz") {};
   # installs a vim plugin from git with a given tag / branch
-  pluginGit = ref: name: repo: unstable.vimUtils.buildVimPluginFrom2Nix {
-    pname = "vim-plugin-${name}";
+  pluginGit = ref: repo: unstable.vimUtils.buildVimPluginFrom2Nix {
+    pname = "${lib.strings.sanitizeDerivationName repo}";
     version = ref;
     src = builtins.fetchGit {
       url = "https://github.com/${repo}.git";
@@ -51,12 +51,13 @@ in {
       # TODO use unstable tree-sitter once version hits 19
       master.tree-sitter
 
+      jq curl # rest.nvim
+
       # for telescope
       # TODO add telescope
       #bat ripgrep fd
 
-      # pdfviewer for latex
-      zathura xdotool
+      zathura xdotool # pdfviewer for latex
 
       # extra language servers
       #rnix-lsp TODO fix slow closing time of neovim
@@ -70,44 +71,44 @@ in {
       vim-which-key
 
       # lsp
-      (plugin "lsp" "neovim/nvim-lspconfig")
+      (plugin "neovim/nvim-lspconfig")
       #vim-vsnip
-      (plugin "compe" "hrsh7th/nvim-compe")
-      (plugin "delimitMate" "Raimondi/delimitMate")
-      # get vimtex going
+      (plugin "hrsh7th/nvim-compe")
+      (plugin "Raimondi/delimitMate") # auto bracket
+      (plugin "nvim-lua/lsp_extensions.nvim") # rust inline hints
 
-      # coc
-      #coc-nvim
-      #coc-fzf
       vimtex
 
       # syntax highlighting
-      (plugin "nvim-treesitter" "nvim-treesitter/nvim-treesitter")
-      (plugin "nvim-ts-rainbow" "p00f/nvim-ts-rainbow") # bracket highlighting
+      (plugin "nvim-treesitter/nvim-treesitter")
+      (plugin "p00f/nvim-ts-rainbow") # bracket highlighting
 
       # TODO fix context
       #nvim-treesitter-context
 
-      # telescope
+      # utilities
       #(plugin "lua-popup" "nvim-lua/popup.nvim")
-      (plugin "lua-plenary" "nvim-lua/plenary.nvim")
+      (plugin "nvim-lua/plenary.nvim")
       #(plugin "nvim-telescope" "nvim-telescope/telescope.nvim")
-      # TODO get these going
-      #(plugin "nvim-web-devicons" "kyazdani42/nvim-web-devicons")
+      (plugin "kyazdani42/nvim-web-devicons")
+
+      # TODO get this going
       #(plugin "nvim-nonicons" "yamatsum/nvim-nonicons")
+
       # highlights current variable with underline
-      (plugin "nvim-cursorline" "yamatsum/nvim-cursorline")
+      (plugin "yamatsum/nvim-cursorline")
+      (plugin "lewis6991/gitsigns.nvim")
+      (pluginGit "lua" "lukas-reineke/indent-blankline.nvim")
 
-      (plugin "gitsigns" "lewis6991/gitsigns.nvim")
+      (plugin "hoob3rt/lualine.nvim")
+      (plugin "akinsho/nvim-bufferline.lua")
 
-      # indentline
-      (pluginGit "lua" "indent-blankline" "lukas-reineke/indent-blankline.nvim")
-
-      vim-airline
+      #vim-airline
       fzfWrapper
       fzf-vim
-      (plugin "colorizer-lua" "norcalli/nvim-colorizer.lua")
-      (plugin "clever-f" "rhysd/clever-f.vim")
+      (plugin "norcalli/nvim-colorizer.lua")
+      #(plugin "clever-f" "rhysd/clever-f.vim")
+      (plugin "rhysd/clever-f.vim")
       # TODO fix wilder (:UpdateRemotePlugins does not work)
       #(plugin "wilder" "gelguy/wilder.nvim")
       vim-better-whitespace
@@ -116,16 +117,17 @@ in {
       nerdcommenter
 
       emmet-vim
-      (plugin "tagalong" "AndrewRadev/tagalong.vim")
-      (plugin "codi" "metakirby5/codi.vim")
+      (plugin "AndrewRadev/tagalong.vim")
+      (plugin "metakirby5/codi.vim")
 
       # TODO lazyload
       vimwiki
       vim-grammarous
-      (plugin "startuptime" "dstein64/vim-startuptime")
-      (plugin "vim-todo" "wsdjeg/vim-todo")
+      (plugin "dstein64/vim-startuptime")
+      (plugin "wsdjeg/vim-todo")
       goyo-vim
       limelight-vim
+      (plugin "NTBBloodbath/rest.nvim") # http client
 
       # TODO configure nvim tree lua
       nerdtree
@@ -133,6 +135,9 @@ in {
 
       # TODO maybe replace with nvim web devicons
       vim-devicons
+
+      # colorschemes
+      #(plugin "tokyo" "folke/tokyonight.nvim")
     ];
   };
 }

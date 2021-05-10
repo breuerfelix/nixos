@@ -21,7 +21,7 @@ in {
 
     packages = with pkgs; [
       # system
-      nerdfonts corefonts
+      nerdfonts corefonts recursive # fonts
       pavucontrol pasystray # pulseaudio
       pcmanfm # filebrowser
       libnotify # used for notifications
@@ -39,6 +39,7 @@ in {
       sshfs # mount folders over ssh
       paprefs # allows multiple output sources
       unstable.zenmonitor
+      playerctl
 
       unstable.esptool
 
@@ -56,7 +57,7 @@ in {
       xclip
       gitAndTools.delta
       unstable.starship # cross-shell prompt
-      cht-sh # interactive terminal cheat sheet
+      cht-sh tealdeer # interactive terminal cheat sheet
 
       cargo # rust
 
@@ -112,6 +113,7 @@ in {
       synergy
       screenkey
       signal-desktop
+      unstable.spotify
       #lutris # gaming on linux
 
       #obsidian # gui for knowledge base
@@ -131,6 +133,6 @@ in {
     fzf = true;
     neovim = true;
     neovim_airline = true;
-    #tmux = true;
+    tmux = true;
   };
 }

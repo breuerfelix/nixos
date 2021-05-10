@@ -3,7 +3,7 @@ let
   unstable = import <nixos-unstable> { config = { allowUnfree = true; }; };
 in {
   # unstable package overrides
-  nixpkgs.config.packageOverrides = pkgs: {
+  nixpkgs.config.packageOverrides = pkgs: rec {
     fzf = unstable.fzf;
     alacritty = unstable.alacritty;
   };
