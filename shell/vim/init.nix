@@ -66,6 +66,7 @@ in {
       gopls
       texlab
       nodePackages.pyright
+      rust-analyzer
     ];
     plugins = with unstable.vimPlugins; [
       vim-which-key

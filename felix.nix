@@ -59,7 +59,10 @@ in {
       unstable.starship # cross-shell prompt
       cht-sh tealdeer # interactive terminal cheat sheet
 
-      cargo # rust
+      # rust
+      rustup
+      #pkg-config
+      #openssl
 
       # node tools
       nodejs yarn # npm is built into nodejs
