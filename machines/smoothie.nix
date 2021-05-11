@@ -92,7 +92,7 @@ in {
     };
 
     kernelModules = [ "kvm-intel" ];
-    kernelPackages = unstable.pkgs.linuxPackages_5_11;
+    #kernelPackages = unstable.pkgs.linuxPackages_5_11;
     extraModulePackages = [ ];
     # enables thinkfan control
     extraModprobeConfig = ''
