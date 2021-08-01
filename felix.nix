@@ -45,6 +45,7 @@ in {
 
       # compiler
       gnumake
+      openssl
 
       # Stdenv links libstdc++ to lib path
       gcc gccStdenv
@@ -62,7 +63,6 @@ in {
       # rust
       rustup
       #pkg-config
-      #openssl
 
       # node tools
       nodejs yarn # npm is built into nodejs

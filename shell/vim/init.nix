@@ -49,7 +49,7 @@ in {
     ];
     extraPackages = with unstable; [
       # TODO use unstable tree-sitter once version hits 19
-      master.tree-sitter
+      tree-sitter
 
       jq curl # rest.nvim
 
@@ -99,7 +99,7 @@ in {
       # highlights current variable with underline
       (plugin "yamatsum/nvim-cursorline")
       (plugin "lewis6991/gitsigns.nvim")
-      (pluginGit "lua" "lukas-reineke/indent-blankline.nvim")
+      (plugin "lukas-reineke/indent-blankline.nvim")
 
       (plugin "hoob3rt/lualine.nvim")
       (plugin "akinsho/nvim-bufferline.lua")
