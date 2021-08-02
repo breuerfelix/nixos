@@ -1,5 +1,5 @@
 require'nvim-web-devicons'.setup()
-require'colorizer'.setup()
+--require'colorizer'.setup()
 
 require'gitsigns'.setup {
   signs = {
@@ -20,20 +20,20 @@ require'nvim-treesitter.configs'.setup {
   rainbow = { enable = true, },
 }
 
-require'bufferline'.setup {
-  options = {
-    show_close_icon = false,
-    show_buffer_close_icons = false,
+--require'bufferline'.setup {
+  --options = {
+    --show_close_icon = false,
+    --show_buffer_close_icons = false,
     --separator_style = "thick",
-  },
+  --},
   -- TODO change highlights based on base16
-  highlights = {
-    fill = {
-        guifg = '#3B4252',
-        guibg = '#3B4252',
-    },
-  },
-}
+  --highlights = {
+    --fill = {
+        --guifg = '#3B4252',
+        --guibg = '#3B4252',
+    --},
+  --},
+--}
 
 require'lualine'.setup {
   options = {

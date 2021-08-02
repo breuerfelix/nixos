@@ -141,6 +141,7 @@ noremap <leader>i <C-i>zz
 au BufRead,BufNewFile *.nix set filetype=nix
 
 set background=dark
+colorscheme tokyonight
 
 "
 " THEMING
